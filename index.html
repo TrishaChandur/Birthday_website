@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Birthday Countdown 🎉</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
       height: 100%;
       overflow: hidden;
-      font-family: 'Montserrat', sans-serif;
       background: black;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
     /* Fireworks full screen */
     #fireworks {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -24,44 +24,40 @@
       z-index: -1;
     }
 
-    /* Countdown in the center */
-    #countdown {
+    /* Center content */
+    #overlay {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 4rem;
-      font-weight: 700;
-      color: #FFD700;
       text-align: center;
-      text-shadow: 0 0 20px #FFD700, 0 0 40px #FF8C00, 0 0 60px #FF4500;
-      animation: glowPulse 1.5s infinite alternate;
+      color: #FFD700;
+      text-shadow: 0 0 15px #FF4500, 0 0 25px #FFD700;
     }
 
-    /* Glowing pulse effect */
-    @keyframes glowPulse {
-      from {
-        text-shadow: 0 0 10px #FFD700, 0 0 20px #FF8C00, 0 0 40px #FF4500;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      to {
-        text-shadow: 0 0 20px #FFFF00, 0 0 40px #FFD700, 0 0 80px #FF6347;
-        transform: translate(-50%, -50%) scale(1.1);
-      }
+    #overlay h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    #countdown {
+      font-size: 3rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <!-- Fireworks background -->
+  <!-- Fireworks GIF background -->
   <img src="fireworks.gif" id="fireworks" alt="Fireworks">
 
-  <!-- Countdown -->
-  <div id="countdown"></div>
+  <!-- Overlay text + countdown -->
+  <div id="overlay">
+    <h2>Come back in:</h2>
+    <div id="countdown"></div>
+  </div>
 
   <script>
     const countdownEl = document.getElementById("countdown");
-
-    // 🎯 Target Date (Oct 26, 00:00)
     const targetDate = new Date("October 26, 2025 00:00:00").getTime();
 
     function updateCountdown() {
@@ -76,14 +72,11 @@
 
         countdownEl.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
       } else {
-        // 🚀 Redirect to birthday.html when countdown ends
         window.location.href = "birthday.html";
       }
     }
 
     setInterval(updateCountdown, 1000);
-
-    // Extra check → if opened on/after Oct 26, go straight to birthday page
     if (new Date().getTime() >= targetDate) {
       window.location.href = "birthday.html";
     }
