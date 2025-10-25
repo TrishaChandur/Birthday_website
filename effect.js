@@ -194,17 +194,15 @@ $('#light_candle').click(function(){
     // your existing candle lighting code...
 
 $('#blow_candle').click(function(){
-    // Example: fade out the flame
-    $('.flame').fadeOut('slow');   // assuming your candle flame has class="flame"
+    // Fade out the flames
+    $('.fuego').fadeOut('slow');   // match your HTML class
 
-    // Optional: little smoke effect
-    $('.candle').append('<div class="smoke"></div>');
+    // Optional smoke effect
+    $('.cake').append('<div class="smoke">💨</div>');
     $('.smoke').fadeIn(200).delay(800).fadeOut(1000);
 
     // Hide the button after blowing
     $(this).fadeOut();
 });
-
-
 
 //alert('hello');
