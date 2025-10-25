@@ -1249,6 +1249,14 @@ audio {
         background-color: #466baf;
     }
 
+/* Blow Candle button fade-in effect */
+#blow_candle {
+  transition: opacity 2s ease-in;
+}
+#blow_candle.show {
+  display: inline-block;
+  opacity: 1;
+}
 
 
     /*controlling tablet width*/
