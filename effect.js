@@ -2,6 +2,7 @@ $(window).load(function(){
 	$('.loading').fadeOut('fast');
 	$('.container').fadeIn('fast');
 });
+
 $('document').ready(function(){
 		var vw;
 		$(window).resize(function(){
@@ -28,6 +29,7 @@ $('document').ready(function(){
 			$('#play').fadeIn('slow');
 		});
 	});
+
 	$('#play').click(function(){
 		var audio = $('.song')[0];
         audio.play();
@@ -86,7 +88,6 @@ $('document').ready(function(){
 			loopFive();
 		});
 	}
-
 	function loopSix() {
 		var randleft = 1000*Math.random();
 		var randtop = 500*Math.random();
@@ -106,11 +107,6 @@ $('document').ready(function(){
 		$('.balloon-border').animate({top:-500},8000);
 		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b3').addClass('balloons-rotate-behaviour-two');
-		// $('#b4').addClass('balloons-rotate-behaviour-one');
-		// $('#b5').addClass('balloons-rotate-behaviour-one');
-		// $('#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b7').addClass('balloons-rotate-behaviour-one');
 		loopOne();
 		loopTwo();
 		loopThree();
@@ -138,7 +134,6 @@ $('document').ready(function(){
 		});
 	});
 
-		
 	$('#wish_message').click(function(){
 		 vw = $(window).width()/2;
 
@@ -178,20 +173,19 @@ $('document').ready(function(){
 			$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
 			if(i==50){
 				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					$('.cake').fadeIn('fast');
+					$('.cake').fadeIn('fast').promise().done(function(){
+						// 👇 show Blow Candle button here
+						$('#blow_candle').fadeIn('slow');
+					});
 				});
-				
 			}
 			else{
 				msgLoop(i);
 			}			
-
 		});
-			// body...
 		}
 		
 		msgLoop(0);
-		
 	});
 });
 
@@ -199,7 +193,5 @@ $('document').ready(function(){
 $('#blow_candle').click(function(){
     // Fade out flames when blowing candle
     $('.fuego').fadeOut('slow');
+    $(this).fadeOut('slow');
 });
-
-
-//alert('hello');
