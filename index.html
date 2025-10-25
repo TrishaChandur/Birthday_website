@@ -26,14 +26,28 @@
     }
 
     #countdown {
-      font-size: 2rem;
+      font-size: 3rem;
       text-align: center;
-      text-shadow: 0 0 10px #ff0, 0 0 20px #f0f;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00f260, #0575e6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s infinite alternate;
     }
 
-    #countdown span {
-      display: inline-block;
-      min-width: 70px;
+    #countdown div {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #aaa;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00f260, 0 0 20px #0575e6;
+      }
+      to {
+        text-shadow: 0 0 20px #00f260, 0 0 40px #0575e6;
+      }
     }
   </style>
 </head>
@@ -42,7 +56,7 @@
   <div id="countdown"></div>
 
   <script>
-    // 🎇 Fireworks Effect
+    // 🎇 Fireworks
     const canvas = document.getElementById('fireworks');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -59,7 +73,6 @@
         this.alpha = 1;
         this.decay = Math.random() * 0.02 + 0.01;
       }
-
       draw() {
         ctx.save();
         ctx.globalAlpha = this.alpha;
@@ -69,7 +82,6 @@
         ctx.fill();
         ctx.restore();
       }
-
       update() {
         this.x += this.dx;
         this.y += this.dy;
@@ -94,7 +106,7 @@
     function launchFirework() {
       const x = Math.random() * canvas.width;
       const y = Math.random() * canvas.height / 2;
-      const colors = ["#ff4d4d", "#4dff4d", "#4d4dff", "#ffff4d", "#ff4dff", "#4dffff"];
+      const colors = ["#00f260", "#0575e6", "#4facfe", "#43e97b"];
       const color = colors[Math.floor(Math.random() * colors.length)];
       for (let i = 0; i < 30; i++) {
         fireworks.push(new Firework(x, y, color));
@@ -120,10 +132,7 @@
 
         countdownEl.innerHTML = `
           <div>Come back in:</div>
-          <span>${d}d</span> : 
-          <span>${h}h</span> : 
-          <span>${m}m</span> : 
-          <span>${s}s</span>
+          ${d}d : ${h}h : ${m}m : ${s}s
         `;
       } else {
         countdownEl.innerHTML = "🎉 Happy Birthday! 🎉";
@@ -133,7 +142,6 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Resize canvas on window resize
     window.addEventListener("resize", () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
