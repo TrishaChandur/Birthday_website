@@ -127,21 +127,22 @@ $('document').ready(function(){
 		});
 	});
 
-	$('#light_candle').click(function(){
-		$('.fuego').fadeIn('slow');
-		$(this).fadeOut('slow').promise().done(function(){
-			// 👇 show Blow Candle button instead of Wish Message
-			$('#blow_candle').fadeIn('slow');
-		});
-	});
+// Light Candle
+$('#light_candle').click(function(){
+    $('.fuego').fadeIn('slow'); // show flames
+    $(this).fadeOut('slow').promise().done(function(){
+        $('#blow_candle').fadeIn('slow');
+    });
+});
 
-	// NEW: Blow Candle button
-	$('#blow_candle').click(function(){
-		$('.fuego').fadeOut('slow'); // Flames out
-		$(this).fadeOut('slow').promise().done(function(){
-			$('#wish_message').fadeIn('slow'); // Then show Happy Birthday
-		});
-	});
+// Blow Candle
+$('#blow_candle').click(function(){
+    $('.fuego').fadeOut('slow');   // flames disappear
+    $(this).fadeOut('slow').promise().done(function(){
+        // 👇 after blowing candles, continue to wish message
+        $('#wish_message').fadeIn('slow');
+    });
+});
 
 	$('#wish_message').click(function(){
 		vw = $(window).width()/2;
