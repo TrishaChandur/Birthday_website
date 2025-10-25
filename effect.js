@@ -23,7 +23,7 @@ $('document').ready(function(){
 		$('#bulb_green').addClass('bulb-glow-green');
 		$('#bulb_pink').addClass('bulb-glow-pink');
 		$('#bulb_orange').addClass('bulb-glow-orange');
-		$('body').addClass('lavender');
+		$('body').addClass('peach');
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
 			$('#play').fadeIn('slow');
 		});
@@ -38,7 +38,7 @@ $('document').ready(function(){
 		$('#bulb_pink').addClass('bulb-glow-pink-after');
 		$('#bulb_orange').addClass('bulb-glow-orange-after');
 		$('body').css('backgroud-color','#FFF');
-		$('body').addClass('lavender-after');
+		$('body').addClass('peach-after');
 		$(this).fadeOut('slow').delay(6000).promise().done(function(){
 			$('#bannar_coming').fadeIn('slow');
 		});
@@ -175,7 +175,7 @@ $('document').ready(function(){
 		function msgLoop (i) {
 			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
 			i=i+1;
-			$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
+			$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
 			if(i==50){
 				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
 					$('.cake').fadeIn('fast');
@@ -195,11 +195,7 @@ $('document').ready(function(){
 	});
 });
 
-// Blow Candle button
-$('#blow_candle').click(function(){
-    // Fade out flames when blowing candle
-    $('.fuego').fadeOut('slow');
-});
+
 
 
 //alert('hello');
