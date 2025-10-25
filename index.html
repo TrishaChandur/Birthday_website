@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Birthday Countdown 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
       height: 100%;
-      background: black;
+      background: #000;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Montserrat', sans-serif;
-      color: white;
+      font-family: 'Poppins', sans-serif;
     }
 
     canvas {
@@ -26,37 +26,46 @@
     }
 
     #countdown {
-      font-size: 3rem;
       text-align: center;
-      font-weight: bold;
-      background: linear-gradient(90deg, #00f260, #0575e6);
+      color: #fff;
+    }
+
+    #countdown div.label {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    #countdown .time {
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #e0eafc, #cfdef3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glow 2s infinite alternate;
+      animation: fadeGlow 3s infinite alternate;
     }
 
-    #countdown div {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: #aaa;
-    }
-
-    @keyframes glow {
+    @keyframes fadeGlow {
       from {
-        text-shadow: 0 0 10px #00f260, 0 0 20px #0575e6;
+        text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(173,216,230,0.4);
       }
       to {
-        text-shadow: 0 0 20px #00f260, 0 0 40px #0575e6;
+        text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(173,216,230,0.7);
       }
     }
   </style>
 </head>
 <body>
   <canvas id="fireworks"></canvas>
-  <div id="countdown"></div>
+  <div id="countdown">
+    <div class="label">Come back in:</div>
+    <div class="time" id="time"></div>
+  </div>
 
   <script>
-    // 🎇 Fireworks
+    // 🎇 Fireworks Effect
     const canvas = document.getElementById('fireworks');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -67,9 +76,9 @@
         this.x = x;
         this.y = y;
         this.color = color;
-        this.radius = Math.random() * 3 + 2;
-        this.dx = (Math.random() - 0.5) * 6;
-        this.dy = (Math.random() - 0.5) * 6;
+        this.radius = Math.random() * 2 + 1;
+        this.dx = (Math.random() - 0.5) * 5;
+        this.dy = (Math.random() - 0.5) * 5;
         this.alpha = 1;
         this.decay = Math.random() * 0.02 + 0.01;
       }
@@ -106,19 +115,19 @@
     function launchFirework() {
       const x = Math.random() * canvas.width;
       const y = Math.random() * canvas.height / 2;
-      const colors = ["#00f260", "#0575e6", "#4facfe", "#43e97b"];
+      const colors = ["#ffffff", "#add8e6", "#87cefa", "#f0f8ff"];
       const color = colors[Math.floor(Math.random() * colors.length)];
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 25; i++) {
         fireworks.push(new Firework(x, y, color));
       }
     }
 
-    setInterval(launchFirework, 700);
+    setInterval(launchFirework, 1000);
     animate();
 
-    // 🎯 Countdown Timer
-    const countdownEl = document.getElementById("countdown");
-    const targetDate = new Date("October 26, 2025 00:00:00").getTime();
+    // 🎯 Countdown Timer (locked to IST)
+    const timeEl = document.getElementById("time");
+    const targetDate = new Date("2025-10-25T18:30:00Z").getTime(); // 26 Oct 00:00 IST
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -130,18 +139,16 @@
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        countdownEl.innerHTML = `
-          <div>Come back in:</div>
-          ${d}d : ${h}h : ${m}m : ${s}s
-        `;
+        timeEl.innerHTML = `${d}d : ${h}h : ${m}m : ${s}s`;
       } else {
-        countdownEl.innerHTML = "🎉 Happy Birthday! 🎉";
+        timeEl.innerHTML = "🎉 Happy Birthday! 🎉";
       }
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
+    // Resize canvas
     window.addEventListener("resize", () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
