@@ -2,111 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Birthday Surprise 🎂</title>
+  <title>Happy Birthday 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
       height: 100%;
       font-family: 'Montserrat', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
       background: black;
-      color: white;
-      text-align: center;
     }
 
-    #countdown {
-      font-size: 2rem;
-    }
-
-    #reveal {
-      display: none;
-      width: 100%;
-      height: 100%;
-      background: black;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    #fireworks {
-      position: fixed;
+    /* Black screen overlay */
+    #black-screen {
+      position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      display: none;
+      background: black;
+      z-index: 10;
+    }
+
+    /* Fireworks background */
+    #fireworks {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in;
       z-index: -1;
     }
 
-    .hidden {
-      display: none;
+    /* Birthday text */
+    #message {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: gold;
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 0 0 20px rgba(255,255,0,0.9);
+      opacity: 0;
+      transition: opacity 2s ease-in;
     }
   </style>
 </head>
 <body>
-  <!-- Countdown Screen -->
-  <div id="countdown"></div>
+  <!-- Fireworks background -->
+  <img src="fireworks.gif" id="fireworks" alt="Fireworks">
 
-  <!-- Reveal Sequence -->
-  <div id="reveal">
-    <h1 id="title">Happy Birthday 🎉</h1>
-    <canvas id="fireworks"></canvas>
-    <button id="nextBtn">Next Surprise 🎁</button>
-  </div>
+  <!-- Birthday Message -->
+  <div id="message">🎉 Happy Birthday My Love 🎉</div>
+
+  <!-- Black screen overlay -->
+  <div id="black-screen"></div>
 
   <script>
-    const countdown = document.getElementById("countdown");
-    const reveal = document.getElementById("reveal");
-    const title = document.getElementById("title");
-    const nextBtn = document.getElementById("nextBtn");
-
-    // Target Date: Oct 26, 00:00
-    const targetDate = new Date("October 26, 2025 00:00:00").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdown.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-      } else {
-        // Countdown finished -> Reveal sequence
-        countdown.style.display = "none";
-        reveal.style.display = "flex";
-        startReveal();
-      }
-    }
-
-    function startReveal() {
-      // Black screen for 2 seconds
-      title.innerHTML = "";
+    window.onload = () => {
+      // Step 1: Keep black screen for 2 seconds
       setTimeout(() => {
-        title.innerHTML = "🎇 Happy Birthday, My Love 🎇";
-        document.getElementById("fireworks").style.display = "block";
-        startFireworks();
+        document.getElementById("black-screen").style.display = "none";
+
+        // Step 2: Fade in fireworks
+        document.getElementById("fireworks").style.opacity = 1;
+
+        // Step 3: Show message after fireworks visible
+        setTimeout(() => {
+          document.getElementById("message").style.opacity = 1;
+        }, 2000);
       }, 2000);
-    }
-
-    // Fireworks animation (placeholder for now)
-    function startFireworks() {
-      const canvas = document.getElementById("fireworks");
-      const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      // Simple flashing background for demo
-      setInterval(() => {
-        ctx.fillStyle = "rgba(255,255,255,0.1)";
-        ctx.fillRect(0,0,canvas.width,canvas.height);
-      }, 200);
-    }
-
-    setInterval(updateCountdown, 1000);
+    };
   </script>
 </body>
 </html>
