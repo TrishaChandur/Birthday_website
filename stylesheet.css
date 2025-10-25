@@ -1,68 +1,73 @@
 body {
-	/* Old peach/black background replaced with lavender */
-	background-color: lavender;   
-	-webkit-transition:background-color linear 5s;
-	-moz-transition:background-color linear 5s;
-	-o-transition:background-color linear 5s;
-	-ms-transition:background-color linear 5s;
-	transition:background-color linear 5s;
+	background-color: lavender;	/* lavender background */
+	-webkit-transition: background-color linear 5s;
+	-moz-transition: background-color linear 5s;
+	-o-transition: background-color linear 5s;
+	-ms-transition: background-color linear 5s;
+	transition: background-color linear 5s;
 	overflow-x:hidden;
+	color: black; /* global text color black */
 }
 
 .container {
 	display: none;
 }
 
+/* All headings & paragraphs black */
+h1, h2, h3, h4, h5, h6, p {
+	color: black !important;
+}
+
+/* background animation (lavender shades) */
 .peach {
-	background-color: lavender;   
+	background-color: lavender;
 }
 
 .peach-after {
-	-webkit-animation:lavender_alive linear 8s infinite;
-	-moz-animation:lavender_alive linear 8s infinite;
-	-o-animation:lavender_alive linear 8s infinite;
-	-ms-animation:lavender_alive linear 8s infinite;
-	animation:lavender_alive linear 8s infinite;
+	-webkit-animation: lavender_alive linear 8s infinite;
+	-moz-animation: lavender_alive linear 8s infinite;
+	-o-animation: lavender_alive linear 8s infinite;
+	-ms-animation: lavender_alive linear 8s infinite;
+	animation: lavender_alive linear 8s infinite;
 }
 
-/* Background animation cycle */
 @-webkit-keyframes lavender_alive {
 	0%{ background-color: lavender; }
 	25%{ background-color: #e6e6fa; }
-	50%{ background-color: #d8bfd8; }
-	75%{ background-color: #dda0dd; }
+	50%{ background-color: lavender; }
+	75%{ background-color: #dcd0ff; }
 	100%{ background-color: lavender; }
 }
 @-moz-keyframes lavender_alive {
 	0%{ background-color: lavender; }
 	25%{ background-color: #e6e6fa; }
-	50%{ background-color: #d8bfd8; }
-	75%{ background-color: #dda0dd; }
+	50%{ background-color: lavender; }
+	75%{ background-color: #dcd0ff; }
 	100%{ background-color: lavender; }
 }
 @-o-keyframes lavender_alive {
 	0%{ background-color: lavender; }
 	25%{ background-color: #e6e6fa; }
-	50%{ background-color: #d8bfd8; }
-	75%{ background-color: #dda0dd; }
+	50%{ background-color: lavender; }
+	75%{ background-color: #dcd0ff; }
 	100%{ background-color: lavender; }
 }
 @-ms-keyframes lavender_alive {
 	0%{ background-color: lavender; }
 	25%{ background-color: #e6e6fa; }
-	50%{ background-color: #d8bfd8; }
-	75%{ background-color: #dda0dd; }
+	50%{ background-color: lavender; }
+	75%{ background-color: #dcd0ff; }
 	100%{ background-color: lavender; }
 }
 @keyframes lavender_alive {
 	0%{ background-color: lavender; }
 	25%{ background-color: #e6e6fa; }
-	50%{ background-color: #d8bfd8; }
-	75%{ background-color: #dda0dd; }
+	50%{ background-color: lavender; }
+	75%{ background-color: #dcd0ff; }
 	100%{ background-color: lavender; }
 }
 
-/* Bulbs styling (same as original – you’ll replace bulb.png files) */
+/* ------------------ BULBS ------------------- */
 .bulb {
 	width: 50px;
 	height: 50px;
@@ -71,18 +76,135 @@ body {
 	background-position:center 0px;
 	background-size: 50px 50px;
 }
+.bulb-holder { height: 70px; }
 
-.bulb-holder {
-	height: 70px;
+/* yellow */
+.bulb-glow-yellow {
+	background-image: url('bulb_yellow.png');
+	animation: bulb_glow_yellow linear 5s;
+}
+@keyframes bulb_glow_yellow {
+	0%{ background-image: url('bulb.png'); opacity: 0; }
+	50%{ opacity: 1; }
+	100%{ background-image: url('bulb_yellow.png'); opacity: 1; }
 }
 
-/* ======================
-   BALLOONS
-====================== */
+/* red */
+.bulb-glow-red {
+	background-image: url('bulb_red.png');
+	animation: bulb_glow_red linear 5s;
+}
+@keyframes bulb_glow_red {
+	0%{ background-image: url('bulb.png'); opacity: 0; }
+	50%{ opacity: 1; }
+	100%{ background-image: url('bulb_red.png'); opacity: 1; }
+}
+
+/* blue */
+.bulb-glow-blue {
+	background-image: url('bulb_blue.png');
+	animation: bulb_glow_blue linear 5s;
+}
+@keyframes bulb_glow_blue {
+	0%{ background-image: url('bulb.png'); opacity: 0; }
+	50%{ opacity: 1; }
+	100%{ background-image: url('bulb_blue.png'); opacity: 1; }
+}
+
+/* green */
+.bulb-glow-green {
+	background-image: url('bulb_green.png');
+	animation: bulb_glow_green linear 5s;
+}
+@keyframes bulb_glow_green {
+	0%{ background-image: url('bulb.png'); opacity: 0; }
+	50%{ opacity: 1; }
+	100%{ background-image: url('bulb_green.png'); opacity: 1; }
+}
+
+/* pink */
+.bulb-glow-pink {
+	background-image: url('bulb_pink.png');
+	animation: bulb_glow_pink linear 5s;
+}
+@keyframes bulb_glow_pink {
+	0%{ background-image: url('bulb.png'); opacity: 0; }
+	50%{ opacity: 1; }
+	100%{ background-image: url('bulb_pink.png'); opacity: 1; }
+}
+
+/* orange */
+.bulb-glow-orange {
+	background-image: url('bulb_orange.png');
+	animation: bulb_glow_orange linear 5s;
+}
+@keyframes bulb_glow_orange {
+	0%{ background-image: url('bulb.png'); opacity: 0; }
+	50%{ opacity: 1; }
+	100%{ background-image: url('bulb_orange.png'); opacity: 1; }
+}
+
+/* ------------------ AFTER MUSIC (blink mode) ------------------- */
+.bulb-glow-yellow-after { animation: bulb_glow_yellow_after linear 1s infinite; }
+@keyframes bulb_glow_yellow_after {
+	0%{ background-image: url('bulb.png'); }
+	50%{ background-image: url('bulb_yellow.png'); }
+	100%{ background-image: url('bulb.png'); }
+}
+.bulb-glow-red-after { animation: bulb_glow_red_after linear 1.2s infinite; }
+@keyframes bulb_glow_red_after {
+	0%{ background-image: url('bulb.png'); }
+	50%{ background-image: url('bulb_red.png'); }
+	100%{ background-image: url('bulb.png'); }
+}
+.bulb-glow-blue-after { animation: bulb_glow_blue_after linear 1.4s infinite; }
+@keyframes bulb_glow_blue_after {
+	0%{ background-image: url('bulb.png'); }
+	50%{ background-image: url('bulb_blue.png'); }
+	100%{ background-image: url('bulb.png'); }
+}
+.bulb-glow-green-after { animation: bulb_glow_green_after linear 1.8s infinite; }
+@keyframes bulb_glow_green_after {
+	0%{ background-image: url('bulb.png'); }
+	50%{ background-image: url('bulb_green.png'); }
+	100%{ background-image: url('bulb.png'); }
+}
+.bulb-glow-pink-after { animation: bulb_glow_pink_after linear 2s infinite; }
+@keyframes bulb_glow_pink_after {
+	0%{ background-image: url('bulb.png'); }
+	50%{ background-image: url('bulb_pink.png'); }
+	100%{ background-image: url('bulb.png'); }
+}
+.bulb-glow-orange-after { animation: bulb_glow_orange_after linear 2.2s infinite; }
+@keyframes bulb_glow_orange_after {
+	0%{ background-image: url('bulb.png'); }
+	50%{ background-image: url('bulb_orange.png'); }
+	100%{ background-image: url('bulb.png'); }
+}
+
+audio { display: none; }
+
+/* ------------------ BANNER ------------------- */
+.bannar {
+	max-width: 100%;
+	transform:translate(0px,-500px);
+}
+.bannar-come {
+	animation: bannar_come linear 6s;
+	transform:translate(0px,0px);
+}
+@keyframes bannar_come {
+	0%{ transform:translate(0px,-1000px); }
+	33%{ transform:translate(0px,0px) rotate(10deg); }
+	66%{ transform:translate(0px,100px) rotate(-10deg); }
+	100%{ transform:translate(0px,0px); }
+}
+
+/* ------------------ BALLOONS ------------------- */
 .balloons {
 	position: fixed;
 	bottom: -200px;
-	opacity: 0.8;
+	opacity: 0.6;
 	z-index: 99;
 	width: 100px;
 	height: 183px;
@@ -93,76 +215,69 @@ body {
 	text-transform: uppercase;
 	font-family: 'Signika', sans-serif;
 	font-size: 50px;
-	color: black;   /* changed to black for lavender bg */
-	text-shadow: 2px 2px 2px #fff;
+	color: black !important; /* changed to black */
+	text-shadow: 2px 2px 2px #FFF;
 	display: none;
+	font-weight: bold;
 }
 
-/* Balloon image references */
 #b1,#b11 { background-image: url('b1.png'); }
 #b2,#b22 { background-image: url('b2.png'); }
 #b3,#b33 { background-image: url('b3.png'); }
-#b4,#b44 { background-image: url('b4.png'); }
-#b5,#b55 { background-image: url('b5.png'); }
-#b6,#b66 { background-image: url('b6.png'); }
-#b7,#b77 { background-image: url('b7.png'); }
+#b4,#b44{ background-image: url('b4.png'); }
+#b5,#b55{ background-image: url('b5.png'); }
+#b6,#b66{ background-image: url('b6.png'); }
+#b7,#b77{ background-image: url('b7.png'); }
 
-/* Balloon floating animation */
-.balloons-rotate-behaviour-one {
-	animation: balloons_rotate_one linear 10s infinite;
-	transform: rotate(30deg);
-}
+.balloons-rotate-behaviour-one { animation: balloons_rotate_one linear 10s infinite; }
 @keyframes balloons_rotate_one {
 	0% { transform: rotate(30deg); }
 	50% { transform: rotate(-30deg); }
 	100% { transform: rotate(30deg); }
 }
-
-.balloons-rotate-behaviour-two {
-	animation: balloons_rotate_two linear 10s infinite;
-	transform: rotate(-20deg);
-}
+.balloons-rotate-behaviour-two { animation: balloons_rotate_two linear 10s infinite; }
 @keyframes balloons_rotate_two {
 	0% { transform: rotate(-20deg); }
 	50% { transform: rotate(20deg); }
 	100% { transform: rotate(-20deg); }
 }
 
-/* ======================
-   MESSAGE TEXT
-====================== */
-.message {
-	margin-top: 200px;
-	display: none;
+.balloon-border{
+	position: fixed;
+	top:100%;
+	opacity: 0.5;
+	z-index: 9999;
 }
+
+/* ------------------ MESSAGE ------------------- */
+.cake-cover { margin-top: 50px; }
+.message { margin-top: 200px; display: none; }
 .message p {
 	font-family: 'Signika', sans-serif;
 	font-size: 30px;
 	text-transform: uppercase;
-	color: black;     /* changed to black text */
-	text-shadow: 1px 1px 2px #fff;
+	color: black !important; /* black text */
+	text-shadow: 1px 1px 1px #FFF;
 	display: none;
 	font-weight: bold;
 }
 
-/* ======================
-   BUTTONS
-====================== */
+/* ------------------ BUTTONS ------------------- */
 .btn-primary {
-    border-color: #6a5acd;   /* lavender-themed */
-    padding: 10px;
-    text-transform: uppercase;
-    font-family: 'Signika', sans-serif;
-    font-weight: 700;
-    color: #fff;
-    background-color: #6a5acd;
+	border-color: #466baf;
+	padding: 10px;
+	text-transform: uppercase;
+	font-family: 'Signika', sans-serif;
+	font-weight: 700;
+	color: #fff;
+	background-color: #466baf;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-    border-color: #fff;
-    color: #fff;
-    background-color: #836fff;
+	border-color: #fff;
+	color: #fff;
+	background-color: #466baf;
 }
