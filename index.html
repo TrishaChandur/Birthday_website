@@ -2,46 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Birthday Countdown 🎉</title>
+  <title>Countdown to Birthday 🎉</title>
   <style>
     body, html {
       margin: 0;
       height: 100%;
-      overflow: hidden;
+      font-family: Arial, sans-serif;
       background: black;
-      color: white;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      font-family: Arial, sans-serif;
+      color: white;
     }
 
     h1 {
       font-size: 2rem;
       margin-bottom: 10px;
+      text-shadow: 0 0 10px #ffcc00;
     }
 
     #countdown {
       font-size: 2.5rem;
       font-weight: bold;
-      color: #ffcc00;
-      margin-bottom: 20px;
+      text-shadow: 0 0 15px #ff4081, 0 0 30px #ffcc00;
     }
 
-    /* Puppy styling */
     #puppy {
+      position: absolute;
+      bottom: 20px;
       width: 150px;
-      margin-top: 20px;
-      animation: bounce 2s infinite;
+      height: auto;
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* Fireworks canvas */
     canvas {
       position: fixed;
       top: 0;
@@ -55,16 +49,14 @@
 <body>
   <h1>Come back in:</h1>
   <div id="countdown"></div>
-
-  <!-- Puppy GIF -->
   <img id="puppy" src="dog.gif" alt="Happy Puppy">
 
   <canvas id="fireworks"></canvas>
 
   <script>
-    // 🎯 Target Date (Oct 26, 2025 00:00 IST)
-    const targetDate = new Date("October 26, 2025 00:00:00 GMT+0530").getTime();
+    // 🎯 Countdown
     const countdownEl = document.getElementById("countdown");
+    const targetDate = new Date("October 26, 2025 00:00:00 GMT+0530").getTime(); // Indian time
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -78,13 +70,15 @@
 
         countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
       } else {
+        // Redirect at midnight 🎉
         window.location.href = "birthday.html";
       }
     }
 
     setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    // 🌟 Fireworks Effect
+    // ✨ Fireworks effect
     const canvas = document.getElementById("fireworks");
     const ctx = canvas.getContext("2d");
     let particles = [];
