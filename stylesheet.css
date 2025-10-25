@@ -1250,14 +1250,8 @@ audio {
     }
 
 #blow_candle {
-  display: none; 
-  opacity: 0;
-  transition: opacity 1.5s ease-in;
-}
-
-#blow_candle.show {
-  display: inline-block;
-  opacity: 1;
+  display: none;
+  margin-top: 15px;
 }
 
     /*controlling tablet width*/
