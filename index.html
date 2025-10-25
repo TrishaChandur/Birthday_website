@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Birthday Countdown 🎉</title>
+  <title>Birthday Countdown 🎂</title>
   <style>
     body, html {
       margin: 0;
       height: 100%;
-      overflow: hidden;
       background: black;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
       color: white;
-      font-family: Arial, sans-serif;
     }
 
-    /* Fullscreen canvas */
     canvas {
       position: fixed;
       top: 0;
@@ -23,128 +25,119 @@
       z-index: -1;
     }
 
-    /* Countdown */
-    #overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: #FFD700;
-      text-shadow: 0 0 15px #FF4500, 0 0 25px #FFD700;
-    }
-
-    #overlay h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
-
     #countdown {
-      font-size: 3rem;
-      font-weight: bold;
+      font-size: 2rem;
+      text-align: center;
+      text-shadow: 0 0 10px #ff0, 0 0 20px #f0f;
+    }
+
+    #countdown span {
+      display: inline-block;
+      min-width: 70px;
     }
   </style>
 </head>
 <body>
-  <canvas id="fireworksCanvas"></canvas>
-
-  <div id="overlay">
-    <h2>Come back in:</h2>
-    <div id="countdown"></div>
-  </div>
+  <canvas id="fireworks"></canvas>
+  <div id="countdown"></div>
 
   <script>
-    // Resize canvas
-    const canvas = document.getElementById("fireworksCanvas");
-    const ctx = canvas.getContext("2d");
+    // 🎇 Fireworks Effect
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    // Firework particle
-    class Particle {
+    class Firework {
       constructor(x, y, color) {
         this.x = x;
         this.y = y;
         this.color = color;
-        this.radius = Math.random() * 2 + 1;
-        this.angle = Math.random() * Math.PI * 2;
-        this.speed = Math.random() * 5 + 1;
-        this.life = 1;
-      }
-
-      update() {
-        this.x += Math.cos(this.angle) * this.speed;
-        this.y += Math.sin(this.angle) * this.speed;
-        this.life -= 0.015;
+        this.radius = Math.random() * 3 + 2;
+        this.dx = (Math.random() - 0.5) * 6;
+        this.dy = (Math.random() - 0.5) * 6;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.02 + 0.01;
       }
 
       draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${this.color},${this.life})`;
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
         ctx.fill();
+        ctx.restore();
+      }
+
+      update() {
+        this.x += this.dx;
+        this.y += this.dy;
+        this.alpha -= this.decay;
       }
     }
 
-    let particles = [];
-
-    function createFirework() {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height * 0.5;
-      const color = `${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}`;
-
-      for (let i = 0; i < 50; i++) {
-        particles.push(new Particle(x, y, color));
-      }
-    }
+    let fireworks = [];
 
     function animate() {
+      requestAnimationFrame(animate);
       ctx.fillStyle = "rgba(0,0,0,0.2)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((p, i) => {
-        p.update();
-        p.draw();
-        if (p.life <= 0) {
-          particles.splice(i, 1);
-        }
+      fireworks.forEach((fw, i) => {
+        fw.update();
+        fw.draw();
+        if (fw.alpha <= 0) fireworks.splice(i, 1);
       });
-
-      requestAnimationFrame(animate);
     }
 
-    setInterval(createFirework, 800);
+    function launchFirework() {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height / 2;
+      const colors = ["#ff4d4d", "#4dff4d", "#4d4dff", "#ffff4d", "#ff4dff", "#4dffff"];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      for (let i = 0; i < 30; i++) {
+        fireworks.push(new Firework(x, y, color));
+      }
+    }
+
+    setInterval(launchFirework, 700);
     animate();
 
-    // 🎯 Countdown
+    // 🎯 Countdown Timer
     const countdownEl = document.getElementById("countdown");
     const targetDate = new Date("October 26, 2025 00:00:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
-      const distance = targetDate - now;
+      const diff = targetDate - now;
 
-      if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (diff > 0) {
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        countdownEl.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+        countdownEl.innerHTML = `
+          <div>Come back in:</div>
+          <span>${d}d</span> : 
+          <span>${h}h</span> : 
+          <span>${m}m</span> : 
+          <span>${s}s</span>
+        `;
       } else {
-        window.location.href = "birthday.html";
+        countdownEl.innerHTML = "🎉 Happy Birthday! 🎉";
       }
     }
 
     setInterval(updateCountdown, 1000);
-    if (new Date().getTime() >= targetDate) {
-      window.location.href = "birthday.html";
-    }
+    updateCountdown();
+
+    // Resize canvas on window resize
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
