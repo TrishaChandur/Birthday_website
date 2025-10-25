@@ -195,7 +195,11 @@ $('document').ready(function(){
 	});
 });
 
-
+// Blow Candle button
+$('#blow_candle').click(function(){
+    // Fade out flames when blowing candle
+    $('.fuego').fadeOut('slow');
+});
 
 
 //alert('hello');
