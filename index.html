@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown to Birthday</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 20%;
+    }
+    #timer {
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown to the Birthday Surprise 🎉</h1>
+  <div id="timer"></div>
+
+  <script>
+    function checkRedirect() {
+      const now = new Date();
+      const target = new Date();
+      target.setHours(0, 0, 0, 0); // today's midnight (00:00)
+
+      if (now >= target) {
+        // Already midnight or after → go straight to birthday.html
+        window.location.href = "birthday.html";
+      } else {
+        // Before midnight → show countdown
+        const distance = target - now;
+
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML =
+          `${hours}h ${minutes}m ${seconds}s`;
+
+        setTimeout(checkRedirect, 1000); // update every second
+      }
+    }
+
+    checkRedirect(); // start check
+  </script>
+</body>
+</html>
