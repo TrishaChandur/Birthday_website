@@ -4,18 +4,18 @@ $(window).load(function(){
 });
 
 $('document').ready(function(){
-		var vw;
-		$(window).resize(function(){
-			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-			$('#b11').animate({top:240, left: vw-350},500);
-			$('#b22').animate({top:240, left: vw-250},500);
-			$('#b33').animate({top:240, left: vw-150},500);
-			$('#b44').animate({top:240, left: vw-50},500);
-			$('#b55').animate({top:240, left: vw+50},500);
-			$('#b66').animate({top:240, left: vw+150},500);
-			$('#b77').animate({top:240, left: vw+250},500);
-		});
+	var vw;
+	$(window).resize(function(){
+		vw = $(window).width()/2;
+		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+		$('#b11').animate({top:240, left: vw-350},500);
+		$('#b22').animate({top:240, left: vw-250},500);
+		$('#b33').animate({top:240, left: vw-150},500);
+		$('#b44').animate({top:240, left: vw-50},500);
+		$('#b55').animate({top:240, left: vw+50},500);
+		$('#b66').animate({top:240, left: vw+150},500);
+		$('#b77').animate({top:240, left: vw+250},500);
+	});
 
 	$('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
@@ -32,8 +32,8 @@ $('document').ready(function(){
 
 	$('#play').click(function(){
 		var audio = $('.song')[0];
-        audio.play();
-        $('#bulb_yellow').addClass('bulb-glow-yellow-after');
+		audio.play();
+		$('#bulb_yellow').addClass('bulb-glow-yellow-after');
 		$('#bulb_red').addClass('bulb-glow-red-after');
 		$('#bulb_blue').addClass('bulb-glow-blue-after');
 		$('#bulb_green').addClass('bulb-glow-green-after');
@@ -130,12 +130,21 @@ $('document').ready(function(){
 	$('#light_candle').click(function(){
 		$('.fuego').fadeIn('slow');
 		$(this).fadeOut('slow').promise().done(function(){
-			$('#wish_message').fadeIn('slow');
+			// 👇 show Blow Candle button instead of Wish Message
+			$('#blow_candle').fadeIn('slow');
+		});
+	});
+
+	// NEW: Blow Candle button
+	$('#blow_candle').click(function(){
+		$('.fuego').fadeOut('slow'); // Flames out
+		$(this).fadeOut('slow').promise().done(function(){
+			$('#wish_message').fadeIn('slow'); // Then show Happy Birthday
 		});
 	});
 
 	$('#wish_message').click(function(){
-		 vw = $(window).width()/2;
+		vw = $(window).width()/2;
 
 		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
 		$('#b1').attr('id','b11');
@@ -169,29 +178,19 @@ $('document').ready(function(){
 
 		function msgLoop (i) {
 			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-			i=i+1;
-			$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
-			if(i==50){
-				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					$('.cake').fadeIn('fast').promise().done(function(){
-						// 👇 show Blow Candle button here
-						$('#blow_candle').fadeIn('slow');
+				i=i+1;
+				$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
+				if(i==50){
+					$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+						$('.cake').fadeIn('fast');
 					});
-				});
-			}
-			else{
-				msgLoop(i);
-			}			
-		});
+				}
+				else{
+					msgLoop(i);
+				}			
+			});
 		}
 		
 		msgLoop(0);
 	});
-});
-
-// Blow Candle button
-$('#blow_candle').click(function(){
-    // Fade out flames when blowing candle
-    $('.fuego').fadeOut('slow');
-    $(this).fadeOut('slow');
 });
