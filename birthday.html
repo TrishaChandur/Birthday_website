@@ -11,12 +11,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: black;
+      background-color: lavender;
       flex-direction: column;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
 
-    #lights-btn {
+    button {
       padding: 15px 30px;
       font-size: 20px;
       font-weight: bold;
@@ -26,15 +27,12 @@
       border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
+      margin-top: 20px;
+      z-index: 10;
     }
 
-    #lights-btn:hover {
+    button:hover {
       background: #4834d4;
-    }
-
-    #content {
-      display: none;
-      text-align: center;
     }
 
     h1 {
@@ -43,65 +41,67 @@
       margin-top: 20px;
     }
 
-    /* Realistic Balloons */
+    /* Balloons */
     .balloon {
       position: absolute;
-      bottom: -150px;
+      bottom: -120px;
       width: 60px;
       height: 80px;
-      border-radius: 60% 60% 60% 60%;
+      border-radius: 50% 50% 45% 45%;
       background: radial-gradient(circle at 30% 30%, #fff, var(--color));
       box-shadow: inset -3px -8px 10px rgba(0,0,0,0.2);
-      animation: floatSide 10s linear infinite;
+      animation: floatSide linear infinite;
     }
 
     .string {
       position: absolute;
       top: 80px;
-      left: 28px;
+      left: 29px;
       width: 2px;
-      height: 60px;
+      height: 50px;
       background: #555;
     }
 
     @keyframes floatSide {
       0% {
         transform: translateX(-10vw) translateY(100vh);
+        opacity: 0;
       }
-      50% {
-        transform: translateX(50vw) translateY(50vh);
-      }
+      20% { opacity: 1; }
       100% {
         transform: translateX(110vw) translateY(-20vh);
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Button -->
-  <button id="lights-btn">✨ Please turn on the lights ✨</button>
+  <!-- First button -->
+  <button id="decor-btn">🎊 Let’s Decor 🎊</button>
 
-  <!-- Hidden content -->
-  <div id="content">
-    <h1>Happy Birthday 🎂🎉</h1>
-  </div>
+  <!-- Cake button (hidden at first) -->
+  <button id="cake-btn" style="display:none;">🎂 Ready for Cake Cutting? 🎂</button>
 
   <script>
     const colors = ["#ff7675", "#55efc4", "#74b9ff", "#ffeaa7", "#a29bfe", "#fd79a8"];
 
-    document.getElementById("lights-btn").addEventListener("click", function() {
-      document.body.style.backgroundColor = "lavender"; 
-      document.getElementById("content").style.display = "block"; 
+    // When "Let's Decor" is clicked
+    document.getElementById("decor-btn").addEventListener("click", function() {
       this.style.display = "none"; 
 
       // Create balloons
-      for (let i = 0; i < 15; i++) {
+      for (let i = 0; i < 25; i++) {
         let balloon = document.createElement("div");
         balloon.classList.add("balloon");
         balloon.style.left = Math.random() * window.innerWidth + "px";
         balloon.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
-        balloon.style.animationDuration = (8 + Math.random() * 5) + "s";
+        
+        // Random size & speed
+        let size = 40 + Math.random() * 60;
+        balloon.style.width = size + "px";
+        balloon.style.height = (size * 1.3) + "px";
+        balloon.style.animationDuration = (6 + Math.random() * 6) + "s";
 
         // Add string
         let string = document.createElement("div");
@@ -110,6 +110,11 @@
 
         document.body.appendChild(balloon);
       }
+
+      // Show Cake button after 3 seconds
+      setTimeout(() => {
+        document.getElementById("cake-btn").style.display = "inline-block";
+      }, 3000);
     });
   </script>
 
