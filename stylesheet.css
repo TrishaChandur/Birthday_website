@@ -1,0 +1,168 @@
+body {
+	/* Old peach/black background replaced with lavender */
+	background-color: lavender;   
+	-webkit-transition:background-color linear 5s;
+	-moz-transition:background-color linear 5s;
+	-o-transition:background-color linear 5s;
+	-ms-transition:background-color linear 5s;
+	transition:background-color linear 5s;
+	overflow-x:hidden;
+}
+
+.container {
+	display: none;
+}
+
+.peach {
+	background-color: lavender;   
+}
+
+.peach-after {
+	-webkit-animation:lavender_alive linear 8s infinite;
+	-moz-animation:lavender_alive linear 8s infinite;
+	-o-animation:lavender_alive linear 8s infinite;
+	-ms-animation:lavender_alive linear 8s infinite;
+	animation:lavender_alive linear 8s infinite;
+}
+
+/* Background animation cycle */
+@-webkit-keyframes lavender_alive {
+	0%{ background-color: lavender; }
+	25%{ background-color: #e6e6fa; }
+	50%{ background-color: #d8bfd8; }
+	75%{ background-color: #dda0dd; }
+	100%{ background-color: lavender; }
+}
+@-moz-keyframes lavender_alive {
+	0%{ background-color: lavender; }
+	25%{ background-color: #e6e6fa; }
+	50%{ background-color: #d8bfd8; }
+	75%{ background-color: #dda0dd; }
+	100%{ background-color: lavender; }
+}
+@-o-keyframes lavender_alive {
+	0%{ background-color: lavender; }
+	25%{ background-color: #e6e6fa; }
+	50%{ background-color: #d8bfd8; }
+	75%{ background-color: #dda0dd; }
+	100%{ background-color: lavender; }
+}
+@-ms-keyframes lavender_alive {
+	0%{ background-color: lavender; }
+	25%{ background-color: #e6e6fa; }
+	50%{ background-color: #d8bfd8; }
+	75%{ background-color: #dda0dd; }
+	100%{ background-color: lavender; }
+}
+@keyframes lavender_alive {
+	0%{ background-color: lavender; }
+	25%{ background-color: #e6e6fa; }
+	50%{ background-color: #d8bfd8; }
+	75%{ background-color: #dda0dd; }
+	100%{ background-color: lavender; }
+}
+
+/* Bulbs styling (same as original – you’ll replace bulb.png files) */
+.bulb {
+	width: 50px;
+	height: 50px;
+	margin: auto;
+	background-repeat: no-repeat no-repeat;
+	background-position:center 0px;
+	background-size: 50px 50px;
+}
+
+.bulb-holder {
+	height: 70px;
+}
+
+/* ======================
+   BALLOONS
+====================== */
+.balloons {
+	position: fixed;
+	bottom: -200px;
+	opacity: 0.8;
+	z-index: 99;
+	width: 100px;
+	height: 183px;
+	background-repeat: no-repeat no-repeat;
+	background-size: 100px 183px;
+}
+.balloons h2 {
+	text-transform: uppercase;
+	font-family: 'Signika', sans-serif;
+	font-size: 50px;
+	color: black;   /* changed to black for lavender bg */
+	text-shadow: 2px 2px 2px #fff;
+	display: none;
+}
+
+/* Balloon image references */
+#b1,#b11 { background-image: url('b1.png'); }
+#b2,#b22 { background-image: url('b2.png'); }
+#b3,#b33 { background-image: url('b3.png'); }
+#b4,#b44 { background-image: url('b4.png'); }
+#b5,#b55 { background-image: url('b5.png'); }
+#b6,#b66 { background-image: url('b6.png'); }
+#b7,#b77 { background-image: url('b7.png'); }
+
+/* Balloon floating animation */
+.balloons-rotate-behaviour-one {
+	animation: balloons_rotate_one linear 10s infinite;
+	transform: rotate(30deg);
+}
+@keyframes balloons_rotate_one {
+	0% { transform: rotate(30deg); }
+	50% { transform: rotate(-30deg); }
+	100% { transform: rotate(30deg); }
+}
+
+.balloons-rotate-behaviour-two {
+	animation: balloons_rotate_two linear 10s infinite;
+	transform: rotate(-20deg);
+}
+@keyframes balloons_rotate_two {
+	0% { transform: rotate(-20deg); }
+	50% { transform: rotate(20deg); }
+	100% { transform: rotate(-20deg); }
+}
+
+/* ======================
+   MESSAGE TEXT
+====================== */
+.message {
+	margin-top: 200px;
+	display: none;
+}
+.message p {
+	font-family: 'Signika', sans-serif;
+	font-size: 30px;
+	text-transform: uppercase;
+	color: black;     /* changed to black text */
+	text-shadow: 1px 1px 2px #fff;
+	display: none;
+	font-weight: bold;
+}
+
+/* ======================
+   BUTTONS
+====================== */
+.btn-primary {
+    border-color: #6a5acd;   /* lavender-themed */
+    padding: 10px;
+    text-transform: uppercase;
+    font-family: 'Signika', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    background-color: #6a5acd;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    border-color: #fff;
+    color: #fff;
+    background-color: #836fff;
+}
