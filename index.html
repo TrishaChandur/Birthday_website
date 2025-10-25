@@ -30,7 +30,7 @@
       color: #fff;
     }
 
-    #countdown div.label {
+    #countdown .label {
       font-size: 1.2rem;
       letter-spacing: 2px;
       color: #ccc;
@@ -55,6 +55,13 @@
         text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(173,216,230,0.7);
       }
     }
+
+    /* Puppy GIF styling */
+    #puppy {
+      margin-top: 30px;
+      width: 180px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -62,6 +69,8 @@
   <div id="countdown">
     <div class="label">Come back in:</div>
     <div class="time" id="time"></div>
+    <!-- Puppy GIF -->
+    <img src="dog.gif" alt="Happy Puppy" id="puppy">
   </div>
 
   <script>
