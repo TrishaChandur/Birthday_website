@@ -1,8 +1,11 @@
-$(window).load(function(){
+// ✅ FIXED: use .on('load') instead of .load
+$(window).on('load', function(){
 	$('.loading').fadeOut('fast');
 	$('.container').fadeIn('fast');
 });
-$('document').ready(function(){
+
+// ✅ FIXED: use $(document).ready instead of $('document').ready
+$(document).ready(function(){
 		var vw;
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
@@ -86,7 +89,6 @@ $('document').ready(function(){
 			loopFive();
 		});
 	}
-
 	function loopSix() {
 		var randleft = 1000*Math.random();
 		var randtop = 500*Math.random();
@@ -106,11 +108,6 @@ $('document').ready(function(){
 		$('.balloon-border').animate({top:-500},8000);
 		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b3').addClass('balloons-rotate-behaviour-two');
-		// $('#b4').addClass('balloons-rotate-behaviour-one');
-		// $('#b5').addClass('balloons-rotate-behaviour-one');
-		// $('#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b7').addClass('balloons-rotate-behaviour-one');
 		loopOne();
 		loopTwo();
 		loopThree();
@@ -138,7 +135,6 @@ $('document').ready(function(){
 		});
 	});
 
-		
 	$('#wish_message').click(function(){
 		 vw = $(window).width()/2;
 
@@ -172,36 +168,30 @@ $('document').ready(function(){
 		
 		var i;
 
-function msgLoop(i) {
-    $("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-        i = i + 1;
-        $("p:nth-child("+i+")").fadeIn('slow').delay(3000);
+		function msgLoop(i) {
+			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
+				i = i + 1;
+				$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
 
-        // 👉 instead of hardcoding 50, check last paragraph dynamically
-        if(i == $(".message p").length){
-            $(".message p:last").fadeOut('slow').promise().done(function () {
-                $('.cake').fadeIn('fast');
+				if(i == $(".message p").length){
+					$(".message p:last").fadeOut('slow').promise().done(function () {
+						$('.cake').fadeIn('fast');
+						$('#blow_candle').fadeIn('slow'); // show blow button
+					});
+				}
+				else{
+					msgLoop(i);
+				}
+			});
+		}
+		msgLoop(0);
+	});
 
-                // 👉 Show blow candle button here
-                $('#blow_candle').fadeIn('slow');
-            });
-        }
-        else{
-            msgLoop(i);   // keep looping until all messages done
-        }
-    });
-}
+	$('#blow_candle').click(function(){
+		$('.fuego').fadeOut('slow');   // blow out flames
+		$('.cake').append('<div class="smoke">💨</div>');
+		$('.smoke').fadeIn(200).delay(800).fadeOut(1000);
+		$(this).fadeOut();
+	});
 
-$('#blow_candle').click(function(){
-    // Fade out the flames (correct class is .fuego)
-    $('.fuego').fadeOut('slow');
-
-    // Optional smoke effect
-    $('.cake').append('<div class="smoke">💨</div>');
-    $('.smoke').fadeIn(200).delay(800).fadeOut(1000);
-
-    // Hide the button after blowing
-    $(this).fadeOut();
 });
-
-//alert('hello');
