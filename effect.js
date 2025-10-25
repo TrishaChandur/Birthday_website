@@ -172,36 +172,26 @@ $('document').ready(function(){
 		
 		var i;
 
-		function msgLoop (i) {
-			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-			i=i+1;
-			$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
-			if(i==50){
-				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					$('.cake').fadeIn('fast');
-					$('blow_candle').fadeIn('slow');
-				});
-				
-			}
-			else{
-				msgLoop(i);
-			}			
+function msgLoop(i) {
+    $("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
+        i=i+1;
+        $("p:nth-child("+i+")").fadeIn('slow').delay(3000);
+        if(i==50){
+            $("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+                $('.cake').fadeIn('fast');
 
-		});
-			// body...
-		}
-		
-		msgLoop(0);
-		
-	});
-});
+                // 👉 Show blow candle button here
+                $('#blow_candle').fadeIn('slow');
+            });
+        }
+        else{
+            msgLoop(i);   // keep looping until all messages done
+        }
+    });
+}
 
 $('#light_candle').click(function(){
     // your existing candle lighting code...
-
-    // After lighting, show the blow button
-    $('#blow_candle').fadeIn('slow');
-});
 
 $('#blow_candle').click(function(){
     // Example: fade out the flame
