@@ -1,25 +1,28 @@
 body {
 	/*background-color: #E6E6FA;*/   /* Base Lavender */
 	background-color: #000;
-	-webkit-transition:background-color linear 5s;
-	-moz-transition:background-color linear 5s;
-	-o-transition:background-color linear 5s;
-	-ms-transition:background-color linear 5s;
-	transition:background-color linear 5s;
-	overflow-x:hidden;
+	-webkit-transition: background-color linear 5s;
+	-moz-transition: background-color linear 5s;
+	-o-transition: background-color linear 5s;
+	-ms-transition: background-color linear 5s;
+	transition: background-color linear 5s;
+	overflow-x: hidden;
 }
+
 .container {
 	display: none;
 }
+
 .lavender {
 	background-color: #E6E6FA;  /* Light Lavender */
 }
+
 .lavender-after {
-	-webkit-animation:lavender_alive linear 8s infinite;
-	-moz-animation:lavender_alive linear 8s infinite;
-	-o-animation:lavender_alive linear 8s infinite;
-	-ms-animation:lavender_alive linear 8s infinite;
-	animation:lavender_alive linear 8s infinite;
+	-webkit-animation: lavender_alive linear 8s infinite;
+	-moz-animation: lavender_alive linear 8s infinite;
+	-o-animation: lavender_alive linear 8s infinite;
+	-ms-animation: lavender_alive linear 8s infinite;
+	animation: lavender_alive linear 8s infinite;
 }
 
 /* Lavender shades animation */
@@ -27,38 +30,37 @@ body {
 	0%   { background-color: #E6E6FA; } /* Lavender */
 	25%  { background-color: #D8BFD8; } /* Thistle */
 	50%  { background-color: #C3B1E1; } /* Lavender Cloud */
-	75%  { background-color: #D6CADD; } /* Spring Bouquet */
-	100% { background-color: #E6E6FA; } /* Lavender again */
+	75%  { background-color: #B497BD; } /* Royal Plum-Lavender */
+	100% { background-color: #E6E6FA; } /* Back to Lavender */
 }
 @-moz-keyframes lavender_alive {
 	0%   { background-color: #E6E6FA; }
 	25%  { background-color: #D8BFD8; }
 	50%  { background-color: #C3B1E1; }
-	75%  { background-color: #D6CADD; }
+	75%  { background-color: #B497BD; }
 	100% { background-color: #E6E6FA; }
 }
 @-o-keyframes lavender_alive {
 	0%   { background-color: #E6E6FA; }
 	25%  { background-color: #D8BFD8; }
 	50%  { background-color: #C3B1E1; }
-	75%  { background-color: #D6CADD; }
+	75%  { background-color: #B497BD; }
 	100% { background-color: #E6E6FA; }
 }
 @-ms-keyframes lavender_alive {
 	0%   { background-color: #E6E6FA; }
 	25%  { background-color: #D8BFD8; }
 	50%  { background-color: #C3B1E1; }
-	75%  { background-color: #D6CADD; }
+	75%  { background-color: #B497BD; }
 	100% { background-color: #E6E6FA; }
 }
 @keyframes lavender_alive {
 	0%   { background-color: #E6E6FA; }
 	25%  { background-color: #D8BFD8; }
 	50%  { background-color: #C3B1E1; }
-	75%  { background-color: #D6CADD; }
+	75%  { background-color: #B497BD; }
 	100% { background-color: #E6E6FA; }
 }
-
 
 .bulb {
 	width: 50px;
