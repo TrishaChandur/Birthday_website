@@ -19,13 +19,26 @@
 
     h1 {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     #countdown {
       font-size: 2.5rem;
       font-weight: bold;
       color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    /* Puppy styling */
+    #puppy {
+      width: 150px;
+      margin-top: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
     /* Fireworks canvas */
@@ -42,12 +55,15 @@
 <body>
   <h1>Come back in:</h1>
   <div id="countdown"></div>
+
+  <!-- Puppy GIF -->
+  <img id="puppy" src="dog.gif" alt="Happy Puppy">
+
   <canvas id="fireworks"></canvas>
 
   <script>
     // 🎯 Target Date (Oct 26, 2025 00:00 IST)
     const targetDate = new Date("October 26, 2025 00:00:00 GMT+0530").getTime();
-
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
@@ -62,7 +78,6 @@
 
         countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
       } else {
-        // Redirect to birthday page 🎂
         window.location.href = "birthday.html";
       }
     }
@@ -103,7 +118,7 @@
 
       particles.forEach((p, i) => {
         const dx = Math.cos(p.angle) * p.speed;
-        const dy = Math.sin(p.angle) * p.speed + 0.05 * (100 - p.life); // gravity
+        const dy = Math.sin(p.angle) * p.speed + 0.05 * (100 - p.life);
 
         p.x += dx;
         p.y += dy;
