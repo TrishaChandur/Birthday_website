@@ -50,21 +50,25 @@
   }
 
   function launchFirework() {
-    const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height / 2;
-
+    const bursts = Math.floor(Math.random() * 3) + 2; // 2 to 4 bursts at once
     const colors = [
       "#ff4d4d", "#ffcc00", "#00ff99", "#66ccff", "#ff66ff", "#ffffff", "#ff9933"
     ];
-    const color = colors[Math.floor(Math.random() * colors.length)];
 
-    const numParticles = 50 + Math.floor(Math.random() * 50); // bigger bursts
-    for (let i = 0; i < numParticles; i++) {
-      particles.push(new Particle(x, y, color));
+    for (let b = 0; b < bursts; b++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * (canvas.height / 2);
+
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const numParticles = 60 + Math.floor(Math.random() * 60);
+
+      for (let i = 0; i < numParticles; i++) {
+        particles.push(new Particle(x, y, color));
+      }
     }
   }
 
-  setInterval(launchFirework, 700);
+  setInterval(launchFirework, 1000); // every second
   animate();
 
   // 🎯 Countdown Timer (IST)
