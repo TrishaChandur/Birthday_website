@@ -174,10 +174,12 @@ $('document').ready(function(){
 
 function msgLoop(i) {
     $("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-        i=i+1;
+        i = i + 1;
         $("p:nth-child("+i+")").fadeIn('slow').delay(3000);
-        if(i==50){
-            $("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+
+        // 👉 instead of hardcoding 50, check last paragraph dynamically
+        if(i == $(".message p").length){
+            $(".message p:last").fadeOut('slow').promise().done(function () {
                 $('.cake').fadeIn('fast');
 
                 // 👉 Show blow candle button here
@@ -190,12 +192,9 @@ function msgLoop(i) {
     });
 }
 
-$('#light_candle').click(function(){
-    // your existing candle lighting code...
-
 $('#blow_candle').click(function(){
-    // Fade out the flames
-    $('.fuego').fadeOut('slow');   // match your HTML class
+    // Fade out the flames (correct class is .fuego)
+    $('.fuego').fadeOut('slow');
 
     // Optional smoke effect
     $('.cake').append('<div class="smoke">💨</div>');
