@@ -1,9 +1,5 @@
 body {
-  background-color: black;  
-  -webkit-transition: background-color linear 5s;
-  -moz-transition: background-color linear 5s;
-  -o-transition: background-color linear 5s;
-  -ms-transition: background-color linear 5s;
+  background-color: black;
   transition: background-color linear 5s;
   overflow-x: hidden;
   color: black; /* text stays visible */
@@ -18,172 +14,62 @@ body {
 }
 
 .lavender-after {
-  -webkit-animation: lavender_alive linear 8s infinite;
-  -moz-animation: lavender_alive linear 8s infinite;
-  -o-animation: lavender_alive linear 8s infinite;
-  -ms-animation: lavender_alive linear 8s infinite;
   animation: lavender_alive linear 8s infinite;
 }
 
 /* Animate through lavender shades */
-@-webkit-keyframes lavender_alive {
-  0%   { background-color: #E6E6FA; }
-  25%  { background-color: #D8BFD8; }
-  50%  { background-color: #E0B0FF; }
-  75%  { background-color: #D8BFD8; }
-  100% { background-color: #E6E6FA; }
-}
-@-moz-keyframes lavender_alive {
-  0%   { background-color: #E6E6FA; }
-  25%  { background-color: #D8BFD8; }
-  50%  { background-color: #E0B0FF; }
-  75%  { background-color: #D8BFD8; }
-  100% { background-color: #E6E6FA; }
-}
-@-o-keyframes lavender_alive {
-  0%   { background-color: #E6E6FA; }
-  25%  { background-color: #D8BFD8; }
-  50%  { background-color: #E0B0FF; }
-  75%  { background-color: #D8BFD8; }
-  100% { background-color: #E6E6FA; }
-}
-@-ms-keyframes lavender_alive {
-  0%   { background-color: #E6E6FA; }
-  25%  { background-color: #D8BFD8; }
-  50%  { background-color: #E0B0FF; }
-  75%  { background-color: #D8BFD8; }
-  100% { background-color: #E6E6FA; }
-}
 @keyframes lavender_alive {
-  0%   { background-color: #E6E6FA; }
-  25%  { background-color: #D8BFD8; }
-  50%  { background-color: #E0B0FF; }
-  75%  { background-color: #D8BFD8; }
-  100% { background-color: #E6E6FA; }
+  0%   { background-color: #E6E6FA; } /* Lavender */
+  25%  { background-color: #D8BFD8; } /* Thistle */
+  50%  { background-color: #E0B0FF; } /* Mauve */
+  75%  { background-color: #D8BFD8; } /* Plum */
+  100% { background-color: #E6E6FA; } /* Lavender */
 }
 
+/* Bulbs */
 .bulb {
   width: 50px;
   height: 50px;
   margin: auto;
-  background-repeat: no-repeat no-repeat;
-  background-position:center 0px;
+  background-repeat: no-repeat;
+  background-position: center 0px;
   background-size: 50px 50px;
 }
 
-.bulb-holder { height: 70px; }
+.bulb-holder {
+  height: 70px;
+}
 
-/* bulb glow yellow */
+/* Example yellow bulb */
 .bulb-glow-yellow {
   background-image: url('bulb_yellow.png');
-  -webkit-animation: bulb_glow_yellow linear 5s;
-  -moz-animation: bulb_glow_yellow linear 5s;
-  -o-animation: bulb_glow_yellow linear 5s;
-  -ms-animation: bulb_glow_yellow linear 5s;
   animation: bulb_glow_yellow linear 5s;
 }
-@-webkit-keyframes bulb_glow_yellow {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_yellow.png'); opacity: 1; }
-}
-@-moz-keyframes bulb_glow_yellow {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_yellow.png'); opacity: 1; }
-}
-@-o-keyframes bulb_glow_yellow {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_yellow.png'); opacity: 1; }
-}
-@-ms-keyframes bulb_glow_yellow {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_yellow.png'); opacity: 1; }
-}
+
 @keyframes bulb_glow_yellow {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_yellow.png'); opacity: 1; }
+  0%   { background-image: url('bulb.png'); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { background-image: url('bulb_yellow.png'); opacity: 1; }
 }
 
-/* bulb glow red */
-.bulb-glow-red {
-  background-image: url('bulb_red.png');
-  -webkit-animation: bulb_glow_red linear 5s;
-  -moz-animation: bulb_glow_red linear 5s;
-  -o-animation: bulb_glow_red linear 5s;
-  -ms-animation: bulb_glow_red linear 5s;
-  animation: bulb_glow_red linear 5s;
-}
-@-webkit-keyframes bulb_glow_red {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_red.png'); opacity: 1; }
-}
-@-moz-keyframes bulb_glow_red {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_red.png'); opacity: 1; }
-}
-@-o-keyframes bulb_glow_red {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_red.png'); opacity: 1; }
-}
-@-ms-keyframes bulb_glow_red {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_red.png'); opacity: 1; }
-}
-@keyframes bulb_glow_red {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_red.png'); opacity: 1; }
+/* -------- BLOW CANDLE BUTTON -------- */
+#blow_candle {
+  display: none;          /* hidden until triggered */
+  position: absolute;
+  bottom: -60px;          /* push below the cake */
+  left: 50%;              
+  transform: translateX(-50%);
+  background-color: #5a4fcf;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Signika', sans-serif;
+  font-size: 16px;
 }
 
-/* bulb glow blue */
-.bulb-glow-blue {
-  background-image: url('bulb_blue.png');
-  -webkit-animation: bulb_glow_blue linear 5s;
-  -moz-animation: bulb_glow_blue linear 5s;
-  -o-animation: bulb_glow_blue linear 5s;
-  -ms-animation: bulb_glow_blue linear 5s;
-  animation: bulb_glow_blue linear 5s;
-}
-@-webkit-keyframes bulb_glow_blue {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_blue.png'); opacity: 1; }
-}
-@-moz-keyframes bulb_glow_blue {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_blue.png'); opacity: 1; }
-}
-@-o-keyframes bulb_glow_blue {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_blue.png'); opacity: 1; }
-}
-@-ms-keyframes bulb_glow_blue {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_blue.png'); opacity: 1; }
-}
-@keyframes bulb_glow_blue {
-  0%{ background-image: url('bulb.png'); opacity: 0; }
-  50%{ opacity: 1; }
-  100%{ background-image: url('bulb_blue.png'); opacity: 1; }
-}
-
-/* glow green/pink/orange … same pattern (keeping your original code) */
-
-/* after music glow animations … unchanged */
-
-/* --- other code like .bannar, .balloons, etc. same as yours --- */
-
+/* Smoke Effect */
 .smoke {
   width: 10px;
   height: 30px;
@@ -192,25 +78,101 @@ body {
   animation: rise 1.5s ease-out forwards;
   display: none;
 }
+
 @keyframes rise {
   0%   { transform: translateY(0) scale(0.5); opacity: 1; }
   100% { transform: translateY(-50px) scale(1.2); opacity: 0; }
 }
 
-/* ✅ Blow Candle Button Styling */
-#blow_candle {
-  display: none;          
-  position: fixed;        /* fixed to bottom */
-  bottom: 20px;           /* little padding from bottom */
-  left: 50%;              
-  transform: translateX(-50%);
-  background-color: #5a4fcf;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+/* Banner */
+.bannar {
+  max-width: 100%;
+  transform: translate(0px, -500px);
+}
+
+.bannar-come {
+  animation: bannar_come linear 6s;
+  transform: translate(0px, 0px);
+}
+
+@keyframes bannar_come {
+  0%   { transform: translate(0px, -1000px); }
+  33%  { transform: translate(0px, 0px) rotate(10deg); }
+  66%  { transform: translate(0px, 100px) rotate(-10deg); }
+  100% { transform: translate(0px, 0px); }
+}
+
+/* Balloons */
+.balloons {
+  position: fixed;
+  bottom: -200px;
+  opacity: 0.6;
+  z-index: 99;
+  width: 100px;
+  height: 183px;
+  background-repeat: no-repeat;
+  background-size: 100px 183px;
+}
+
+.balloons h2 {
+  text-transform: uppercase;
   font-family: 'Signika', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
+  font-size: 50px;
+  color: #BF4136;
+  text-shadow: 5px 5px 5px #FFF;
+  display: none;
+}
+
+/* Control Panel */
+.control-panel {
+  position: fixed;
+  bottom: 0;
+  padding: 10px 0;
+}
+
+#play, 
+#bannar_coming, 
+#balloons_flying,
+#cake_fadein,
+#light_candle,
+#wish_message,
+#story,
+#blow_candle {
+  display: none;
+}
+
+.cake-cover {
+  margin-top: 50px;
+}
+
+.message {
+  margin-top: 200px;
+  display: none;
+}
+
+.message p {
+  font-family: 'Signika', sans-serif;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #C4515C;
+  text-shadow: 2px 2px 2px #FFF;
+  display: none;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary {
+  border-color: #466baf;
+  padding: 10px;
+  text-transform: uppercase;
+  font-family: 'Signika', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  background-color: #466baf;
+}
+
+.btn-primary:hover {
+  border-color: #fff;
+  background-color: #466baf;
+  color: #fff;
 }
