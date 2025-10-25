@@ -3,44 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
       height: 100%;
       background: black;
       overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-
-    #fireworks, #decorations, #cake-section, #memories {
-      display: none;
       text-align: center;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
     }
 
     button {
+      padding: 12px 28px;
       margin-top: 20px;
-      padding: 12px 24px;
       font-size: 1.2rem;
       border: none;
-      border-radius: 8px;
-      background: #ff4081;
+      border-radius: 40px;
+      background: linear-gradient(45deg, #ff4081, #ffd633);
       color: white;
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      transition: background 0.3s;
+      box-shadow: 0 0 20px rgba(255,64,129,0.8), 0 0 40px rgba(255,204,0,0.8);
+      transition: transform 0.3s;
     }
     button:hover {
-      background: #e73370;
+      transform: scale(1.1);
+    }
+
+    #lights, #decorations, #cake-step, #cut-cake {
+      display: none;
+      animation: fadeIn 2s forwards;
     }
 
     /* Balloons */
@@ -49,172 +53,114 @@
       bottom: -150px;
       width: 60px;
       height: 80px;
-      background: red;
-      border-radius: 50% 50% 50% 50%;
-      animation: float 6s linear infinite;
+      border-radius: 50%;
+      animation: float 8s linear infinite;
+      z-index: 2;
     }
     @keyframes float {
       from { transform: translateY(0); }
-      to { transform: translateY(-110vh); }
+      to { transform: translateY(-120vh); }
     }
 
-    /* Cake & Candle */
-    #cake {
-      width: 200px;
-      margin: 20px auto;
-      position: relative;
-    }
-    #candle {
-      width: 20px;
-      height: 60px;
-      background: #fff;
-      margin: auto;
-      position: relative;
-    }
-    #flame {
-      width: 20px;
-      height: 20px;
-      background: orange;
-      border-radius: 50%;
+    /* Confetti */
+    .confetti {
       position: absolute;
-      top: -25px;
-      left: 0;
-      box-shadow: 0 0 20px yellow;
-      animation: flicker 0.2s infinite alternate;
+      width: 10px;
+      height: 20px;
+      background: red;
+      top: -10px;
+      animation: fall 5s linear infinite;
     }
-    @keyframes flicker {
-      from { transform: scale(1); opacity: 1; }
-      to { transform: scale(1.2); opacity: 0.8; }
+    @keyframes fall {
+      from { transform: translateY(0); }
+      to { transform: translateY(120vh) rotate(360deg); }
     }
 
-    #memories {
-      margin-top: 30px;
-      font-size: 1.2rem;
-      line-height: 1.6;
+    /* Fade In */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <!-- Step 2: Fireworks -->
-  <div id="fireworks">
-    <h1>🎆 Happy Birthday, Love! 🎆</h1>
-    <button onclick="showDecorations()">Click to Decorate 🎈</button>
+  <!-- Step 1: Lights -->
+  <div id="lights">
+    <h1>✨ Please Turn on the Lights ✨</h1>
+    <button onclick="turnOnLights()">Turn On</button>
   </div>
 
-  <!-- Step 3: Decorations -->
+  <!-- Step 2: Decorations -->
   <div id="decorations">
-    <h1>🎉 The party begins! 🎉</h1>
+    <h1>🎉 The Party Begins! 🎉</h1>
     <button onclick="showCake()">Bring the Cake 🍰</button>
   </div>
 
-  <!-- Step 4: Cake & Candle -->
-  <div id="cake-section">
+  <!-- Step 3: Cake with candles -->
+  <div id="cake-step">
     <h1>Here’s your Cake 🎂</h1>
-    <div id="cake">
-      <div id="candle">
-        <div id="flame"></div>
-      </div>
-    </div>
-    <button onclick="blowCandle()">Blow Candle 🎤</button>
+    <img src="cake_candles.gif" width="250" alt="Cake with Candles">
+    <p>Please blow the candle 🎤</p>
+    <button onclick="blowCandle()">Blow Candle</button>
   </div>
 
-  <!-- Step 5: Memories -->
-  <div id="memories">
-    <h1>💌 Special Memories 💌</h1>
-    <p>✨ Remember our first trip together...</p>
-    <p>✨ All the laughs, all the late-night talks...</p>
-    <p>✨ You are my happiest place 💖</p>
-    <p>✨ Here’s to more adventures & puzzles ahead 🧩</p>
+  <!-- Step 4: Cake cutting -->
+  <div id="cut-cake">
+    <h1>✨ Make a Wish & Cut the Cake 🎂 ✨</h1>
+    <img src="cake_cutting.gif" width="250" alt="Cake Cutting">
+    <button onclick="proceedPuzzles()">Next ➡️</button>
   </div>
-
-  <canvas id="fw-canvas"></canvas>
 
   <script>
-    // Step 1: Start in black → then fireworks
+    // Start with lights section
     window.onload = () => {
-      setTimeout(() => {
-        document.getElementById("fireworks").style.display = "block";
-      }, 2000);
+      document.getElementById("lights").style.display = "block";
     };
 
-    // Step 3: Decorations
-    function showDecorations() {
-      document.getElementById("fireworks").style.display = "none";
-      document.getElementById("decorations").style.display = "block";
+    function turnOnLights() {
+      document.body.style.background = "#222 url('https://i.imgur.com/2yaf2wb.jpg') center/cover no-repeat";
+      document.getElementById("lights").style.display = "none";
 
-      // add balloons
-      for (let i = 0; i < 10; i++) {
-        const balloon = document.createElement("div");
-        balloon.className = "balloon";
-        balloon.style.left = Math.random() * window.innerWidth + "px";
-        balloon.style.background = `hsl(${Math.random() * 360}, 80%, 60%)`;
-        balloon.style.animationDuration = (4 + Math.random() * 4) + "s";
-        document.body.appendChild(balloon);
-      }
+      // Show decorations after lights fade in
+      setTimeout(() => {
+        document.getElementById("decorations").style.display = "block";
+
+        // Add balloons
+        for (let i = 0; i < 12; i++) {
+          const balloon = document.createElement("div");
+          balloon.className = "balloon";
+          balloon.style.left = Math.random() * window.innerWidth + "px";
+          balloon.style.background = `hsl(${Math.random() * 360}, 80%, 60%)`;
+          balloon.style.animationDuration = (6 + Math.random() * 4) + "s";
+          document.body.appendChild(balloon);
+        }
+
+        // Add confetti
+        for (let i = 0; i < 30; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = Math.random() * window.innerWidth + "px";
+          confetti.style.background = `hsl(${Math.random() * 360}, 80%, 60%)`;
+          confetti.style.animationDuration = (3 + Math.random() * 3) + "s";
+          document.body.appendChild(confetti);
+        }
+      }, 2000);
     }
 
-    // Step 4: Cake
     function showCake() {
       document.getElementById("decorations").style.display = "none";
-      document.getElementById("cake-section").style.display = "block";
+      document.getElementById("cake-step").style.display = "block";
     }
 
-    // Step 5: Blow Candle
     function blowCandle() {
-      const flame = document.getElementById("flame");
-      flame.style.display = "none";
-      setTimeout(() => {
-        document.getElementById("cake-section").style.display = "none";
-        document.getElementById("memories").style.display = "block";
-      }, 1000);
+      document.getElementById("cake-step").style.display = "none";
+      document.getElementById("cut-cake").style.display = "block";
     }
 
-    // Fireworks background
-    const canvas = document.getElementById("fw-canvas");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    function proceedPuzzles() {
+      alert("🎁 Now we’ll go to the puzzles section (to be added next).");
+      // Later: redirect to puzzles page or reveal puzzles here
     }
-    resizeCanvas();
-    window.onresize = resizeCanvas;
-
-    function createFirework() {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height / 2;
-      const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
-      for (let i = 0; i < 80; i++) {
-        particles.push({
-          x, y,
-          angle: Math.random() * 2 * Math.PI,
-          speed: Math.random() * 4 + 1,
-          life: 100,
-          color
-        });
-      }
-    }
-
-    function animateFireworks() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, i) => {
-        p.x += Math.cos(p.angle) * p.speed;
-        p.y += Math.sin(p.angle) * p.speed + 0.05;
-        p.life--;
-        if (p.life > 0) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI);
-          ctx.fillStyle = p.color;
-          ctx.fill();
-        } else {
-          particles.splice(i, 1);
-        }
-      });
-      requestAnimationFrame(animateFireworks);
-    }
-    setInterval(createFirework, 1200);
-    animateFireworks();
   </script>
 </body>
 </html>
