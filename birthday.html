@@ -1,122 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Surprise</title>
+  <meta name="description" content="Happy Birthday">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: lavender;
-      flex-direction: column;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
+      background-color: lavender; /* Lavender background */
+      font-family: 'Signika', sans-serif;
+      overflow-x: hidden;
     }
 
-    button {
-      padding: 15px 30px;
-      font-size: 20px;
+    .balloons h2 {
+      font-size: 40px;
       font-weight: bold;
-      background: #6c5ce7;
-      color: white;
-      border: none;
+    }
+
+    .cake-container {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .cake-container img {
+      max-width: 300px;
       border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 20px;
-      z-index: 10;
     }
 
-    button:hover {
-      background: #4834d4;
-    }
-
-    h1 {
+    .message p {
+      font-size: 18px;
       color: black;
-      font-size: 3rem;
-      margin-top: 20px;
     }
 
-    /* Balloons */
-    .balloon {
-      position: absolute;
-      bottom: -120px;
-      width: 60px;
-      height: 80px;
-      border-radius: 50% 50% 45% 45%;
-      background: radial-gradient(circle at 30% 30%, #fff, var(--color));
-      box-shadow: inset -3px -8px 10px rgba(0,0,0,0.2);
-      animation: floatSide linear infinite;
+    .navbar-fixed-bottom {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px 0;
     }
 
-    .string {
-      position: absolute;
-      top: 80px;
-      left: 29px;
-      width: 2px;
-      height: 50px;
-      background: #555;
-    }
-
-    @keyframes floatSide {
-      0% {
-        transform: translateX(-10vw) translateY(100vh);
-        opacity: 0;
-      }
-      20% { opacity: 1; }
-      100% {
-        transform: translateX(110vw) translateY(-20vh);
-        opacity: 0;
-      }
+    .btn {
+      margin: 5px;
     }
   </style>
 </head>
+
 <body>
+  <audio class="song" controls loop>
+    <source src="hbd.mp3"></source>
+    Your browser isn't invited for super fun audio time.
+  </audio>
 
-  <!-- First button -->
-  <button id="decor-btn">🎊 Let’s Decor 🎊</button>
+  <!-- Balloons -->
+  <div class="balloons text-center" id="b1"><h2 style="color:#F2B300;">H</h2></div>
+  <div class="balloons text-center" id="b2"><h2 style="color:#0719D4;">B</h2></div>
+  <div class="balloons text-center" id="b3"><h2 style="color:#D14D39;">D</h2></div>
+  <div class="balloons text-center" id="b4"><h2 style="color:#8FAD00;">X</h2></div>
+  <div class="balloons text-center" id="b5"><h2 style="color:#8377E4;">O</h2></div>
+  <div class="balloons text-center" id="b6"><h2 style="color:#99C96A;">L</h2></div>
+  <div class="balloons text-center" id="b7"><h2 style="color:#20CFB4;">A</h2></div>
 
-  <!-- Cake button (hidden at first) -->
-  <button id="cake-btn" style="display:none;">🎂 Ready for Cake Cutting? 🎂</button>
+  <img src="Balloon-Border.png" width="100%" class="balloon-border">
 
+  <div class="container">
+    <!-- Banner -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img src="banner.png" class="bannar" alt="Banner">
+      </div>
+    </div>
+
+    <!-- Cake Section (GIF instead of CSS Cake) -->
+    <div class="row cake-container" id="cake-section">
+      <div class="col-md-12 text-center">
+        <img src="cake_cutting.gif" alt="Birthday Cake" />
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="row message text-center" id="message" style="display:none;">
+      <div class="col-md-12">
+        <p>Today is...</p>
+        <p>as beautiful as other days</p>
+        <p>but you realize</p>
+        <p>another year has gone</p>
+        <p>in a blink of the eyes</p>
+        <p><strong>however</strong></p>
+        <p>today is just special...</p>
+        <p>so special to you 💜</p>
+        <p>and I want to wish you...</p>
+        <p>the happiest birthday ever 🎂🎉</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="navbar navbar-fixed-bottom text-center">
+    <button class="btn btn-primary" id="turn_on">Turn On Lights</button>
+    <button class="btn btn-primary" id="play">Play Music</button>
+    <button class="btn btn-primary" id="bannar_coming">Let's Decorate</button>
+    <button class="btn btn-primary" id="balloons_flying">Fly With Balloons</button>
+    <button class="btn btn-primary" id="cake_fadein">Bring the Cake</button>
+    <button class="btn btn-primary" id="light_candle">Light Candle</button>
+    <button class="btn btn-primary" id="wish_message">Happy Birthday</button>
+    <button class="btn btn-primary" id="story">A Message for You</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="effect.js"></script>
+
+  <!-- Custom cake + message triggers -->
   <script>
-    const colors = ["#ff7675", "#55efc4", "#74b9ff", "#ffeaa7", "#a29bfe", "#fd79a8"];
+    $("#cake_fadein").click(function() {
+      $("#cake-section").fadeIn();
+    });
 
-    // When "Let's Decor" is clicked
-    document.getElementById("decor-btn").addEventListener("click", function() {
-      this.style.display = "none"; 
-
-      // Create balloons
-      for (let i = 0; i < 25; i++) {
-        let balloon = document.createElement("div");
-        balloon.classList.add("balloon");
-        balloon.style.left = Math.random() * window.innerWidth + "px";
-        balloon.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
-        
-        // Random size & speed
-        let size = 40 + Math.random() * 60;
-        balloon.style.width = size + "px";
-        balloon.style.height = (size * 1.3) + "px";
-        balloon.style.animationDuration = (6 + Math.random() * 6) + "s";
-
-        // Add string
-        let string = document.createElement("div");
-        string.classList.add("string");
-        balloon.appendChild(string);
-
-        document.body.appendChild(balloon);
-      }
-
-      // Show Cake button after 3 seconds
-      setTimeout(() => {
-        document.getElementById("cake-btn").style.display = "inline-block";
-      }, 3000);
+    $("#wish_message").click(function() {
+      $("#message").fadeIn();
     });
   </script>
-
 </body>
 </html>
