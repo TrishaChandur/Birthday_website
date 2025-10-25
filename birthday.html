@@ -10,9 +10,7 @@
 
   <!-- Your stylesheet -->
   <link rel="stylesheet" href="stylesheet.css">
-  <link rel="stylesheet" href="loading.css"> <!-- optional for intro animation -->
-  <link rel="stylesheet/less" href="cake.less">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
+  <link href="loading.css" rel="stylesheet">
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -30,6 +28,7 @@
     .bannar {
       width: 100%;
       margin: 20px 0;
+      display: none; /* hidden until button clicked */
     }
     .bulb {
       width: 40px;
@@ -41,7 +40,6 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
     .balloons {
-      position: relative;
       display: inline-block;
       margin: 10px;
       padding: 20px;
@@ -56,18 +54,6 @@
       0%   { transform: translateY(0px); }
       50%  { transform: translateY(-30px); }
       100% { transform: translateY(0px); }
-    }
-    .cake {
-      display: none;
-      margin: 30px auto;
-    }
-    .cake img {
-      width: 250px;
-    }
-    .message {
-      margin: 20px auto;
-      font-size: 18px;
-      line-height: 1.6em;
     }
     .control-panel {
       position: fixed;
@@ -113,28 +99,12 @@
   <div class="balloons" id="b6"><h2>O</h2></div>
   <div class="balloons" id="b7"><h2>U</h2></div>
 
-  <!-- Cake -->
-  <div class="cake">
-    <img src="cake_candles.gif" alt="cake">
-  </div>
-
-  <!-- Messages -->
-  <div class="message">
-    <p>Happy Birthday 🎉</p>
-    <p>Wishing you joy and happiness!</p>
-    <p>Have an amazing day 💖</p>
-  </div>
-
   <!-- Control Buttons -->
   <div class="control-panel">
     <button id="turn_on" class="btn btn-primary">Turn on Lights</button>
     <button id="play" class="btn btn-primary">Play Music</button>
     <button id="bannar_coming" class="btn btn-primary">Show Banner</button>
     <button id="balloons_flying" class="btn btn-primary">Fly Balloons</button>
-    <button id="cake_fadein" class="btn btn-primary">Show Cake</button>
-    <button id="light_candle" class="btn btn-primary">Light Candle</button>
-    <button id="wish_message" class="btn btn-primary">Show Wish</button>
-    <button id="story" class="btn btn-primary">Show Story</button>
   </div>
 
 </body>
