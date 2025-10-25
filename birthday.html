@@ -16,27 +16,53 @@
       justify-content: center;
       flex-direction: column;
       overflow: hidden;
-      transition: background 2s ease-in-out;
     }
 
-    /* Lights transparent PNG */
-    #lights {
+    /* Lights effect container */
+    .flash {
       position: fixed;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
       width: 100%;
-      max-height: 200px;
+      height: 100%;
+      background: white;
+      opacity: 0;
+      z-index: 5;
+      transition: opacity 2s ease-in-out;
+    }
+
+    /* Decorative lights (CSS bulbs) */
+    .lights {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
       opacity: 0;
       transition: opacity 2s ease-in-out;
-      z-index: 1;
       pointer-events: none;
+      z-index: 1;
+    }
+    .bulb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: yellow;
+      box-shadow: 0 0 15px yellow, 0 0 30px orange;
+      animation: twinkle 1.5s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.6; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1.1); }
     }
 
     /* Buttons */
     .btn {
       padding: 15px 30px;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: bold;
       background-color: #6c5ce7;
       color: white;
@@ -47,98 +73,127 @@
       margin-top: 20px;
       z-index: 2;
     }
+    .btn:hover { transform: scale(1.1); }
 
-    .btn:hover {
-      transform: scale(1.1);
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 40px;
+      height: 60px;
+      background: red;
+      border-radius: 50% 50% 50% 50%;
+      animation: float 8s linear infinite;
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: black;
+      transform: translateX(-50%);
+    }
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-110vh); }
     }
 
-    /* Message */
-    #message {
-      margin-top: 20px;
-      font-size: 1.5rem;
-      color: black;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-      z-index: 2;
-    }
-
-    /* Cake */
-    #cake {
+    /* Cake images */
+    #cake-candles, #cake-cut {
       display: none;
       margin-top: 20px;
+      width: 300px;
       z-index: 2;
     }
 
-    /* Confetti */
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 30px;
-      background-color: gold;
-      opacity: 0;
-      animation: fall 4s linear forwards;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    /* Blow button */
+    #blow-btn {
+      display: none;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <!-- Lights PNG -->
-  <img id="lights" src="lights.jpg" alt="Lights">
+  <!-- Flash effect -->
+  <div class="flash" id="flash"></div>
+
+  <!-- Decorative lights -->
+  <div class="lights" id="lights">
+    <div class="bulb"></div>
+    <div class="bulb"></div>
+    <div class="bulb"></div>
+    <div class="bulb"></div>
+    <div class="bulb"></div>
+    <div class="bulb"></div>
+    <div class="bulb"></div>
+  </div>
 
   <!-- Step 1: Turn on lights -->
   <button id="start-btn" class="btn">✨ Please turn on the lights ✨</button>
-  <div id="message"></div>
 
-  <!-- Cake -->
-  <img id="cake" src="cake_candles.gif" alt="Birthday Cake">
+  <!-- Step 2: Bring cake button -->
+  <button id="cake-btn" class="btn" style="display:none;">🎂 Bring the cake 🎂</button>
+
+  <!-- Cake with candles -->
+  <img id="cake-candles" src="cake_candles.gif" alt="Cake with Candles">
+
+  <!-- Blow candles button -->
+  <button id="blow-btn" class="btn">💨 Blow the candles 💨</button>
+
+  <!-- Cake cutting gif -->
+  <img id="cake-cut" src="cake_cut.gif" alt="Cake Cutting">
 
   <script>
-    const btn = document.getElementById("start-btn");
+    const flash = document.getElementById("flash");
     const lights = document.getElementById("lights");
-    const msg = document.getElementById("message");
-    const cake = document.getElementById("cake");
+    const startBtn = document.getElementById("start-btn");
+    const cakeBtn = document.getElementById("cake-btn");
+    const cakeCandles = document.getElementById("cake-candles");
+    const blowBtn = document.getElementById("blow-btn");
+    const cakeCut = document.getElementById("cake-cut");
 
-    // Function to trigger confetti
-    function launchConfetti() {
-      for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.backgroundColor = ["gold", "red", "blue", "green", "purple"][Math.floor(Math.random()*5)];
-        confetti.style.animationDelay = Math.random() * 2 + "s";
-        document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 4000);
-      }
-    }
-
-    btn.addEventListener("click", () => {
-      // Fade in lights
-      lights.style.opacity = 1;
-      document.body.style.backgroundColor = "#E6E6FA"; // lavender
-
-      // Show message
+    // Step 1: Turn on lights
+    startBtn.addEventListener("click", () => {
+      // Flash effect
+      flash.style.opacity = 1;
       setTimeout(() => {
-        msg.innerHTML = "The lights are on! 🎇 Time for celebration...";
-        msg.style.opacity = 1;
-        btn.style.display = "none";
+        flash.style.opacity = 0;
+        document.body.style.backgroundColor = "#E6E6FA"; // lavender
+        lights.style.opacity = 1;
+        startBtn.style.display = "none";
+
+        // Balloons
+        for (let i = 0; i < 15; i++) {
+          const balloon = document.createElement("div");
+          balloon.classList.add("balloon");
+          balloon.style.left = Math.random() * 100 + "vw";
+          balloon.style.background = ["red","blue","green","purple","orange","pink"][Math.floor(Math.random()*6)];
+          balloon.style.animationDuration = (6 + Math.random() * 5) + "s";
+          document.body.appendChild(balloon);
+        }
+
+        // Show cake button
+        setTimeout(() => {
+          cakeBtn.style.display = "block";
+        }, 3000);
+
       }, 2000);
+    });
 
-      // Confetti
-      setTimeout(() => {
-        launchConfetti();
-      }, 3000);
+    // Step 2: Bring cake
+    cakeBtn.addEventListener("click", () => {
+      cakeCandles.style.display = "block";
+      cakeBtn.style.display = "none";
+      blowBtn.style.display = "block";
+    });
 
-      // Show cake
-      setTimeout(() => {
-        cake.style.display = "block";
-        msg.innerHTML = "🎂 Here’s your cake with candles! Make a wish...";
-      }, 5000);
+    // Step 3: Blow candles
+    blowBtn.addEventListener("click", () => {
+      cakeCandles.style.display = "none";
+      blowBtn.style.display = "none";
+      cakeCut.style.display = "block";
     });
   </script>
 </body>
