@@ -13,6 +13,7 @@
       align-items: center;
       background-color: black;
       flex-direction: column;
+      overflow: hidden;
     }
 
     #lights-btn {
@@ -35,6 +36,45 @@
       display: none;
       text-align: center;
     }
+
+    h1 {
+      color: black;
+      font-size: 3rem;
+      margin-top: 20px;
+    }
+
+    /* Realistic Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 60% 60% 60% 60%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--color));
+      box-shadow: inset -3px -8px 10px rgba(0,0,0,0.2);
+      animation: floatSide 10s linear infinite;
+    }
+
+    .string {
+      position: absolute;
+      top: 80px;
+      left: 28px;
+      width: 2px;
+      height: 60px;
+      background: #555;
+    }
+
+    @keyframes floatSide {
+      0% {
+        transform: translateX(-10vw) translateY(100vh);
+      }
+      50% {
+        transform: translateX(50vw) translateY(50vh);
+      }
+      100% {
+        transform: translateX(110vw) translateY(-20vh);
+      }
+    }
   </style>
 </head>
 <body>
@@ -44,14 +84,32 @@
 
   <!-- Hidden content -->
   <div id="content">
-    <h1 style="color: lavender;">The lights are ON! 🎉</h1>
+    <h1>Happy Birthday 🎂🎉</h1>
   </div>
 
   <script>
+    const colors = ["#ff7675", "#55efc4", "#74b9ff", "#ffeaa7", "#a29bfe", "#fd79a8"];
+
     document.getElementById("lights-btn").addEventListener("click", function() {
-      document.body.style.backgroundColor = "lavender"; // bg effect
-      document.getElementById("content").style.display = "block"; // show content
-      this.style.display = "none"; // hide button after click
+      document.body.style.backgroundColor = "lavender"; 
+      document.getElementById("content").style.display = "block"; 
+      this.style.display = "none"; 
+
+      // Create balloons
+      for (let i = 0; i < 15; i++) {
+        let balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * window.innerWidth + "px";
+        balloon.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+        balloon.style.animationDuration = (8 + Math.random() * 5) + "s";
+
+        // Add string
+        let string = document.createElement("div");
+        string.classList.add("string");
+        balloon.appendChild(string);
+
+        document.body.appendChild(balloon);
+      }
     });
   </script>
 
