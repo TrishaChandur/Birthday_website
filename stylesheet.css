@@ -2,7 +2,7 @@ body {
   background-color: black;
   transition: background-color linear 5s;
   overflow-x: hidden;
-  color: black; /* text stays visible */
+  color:black;
 }
 
 .container {
@@ -10,14 +10,13 @@ body {
 }
 
 .lavender {
-  background-color: #E6E6FA; /* lavender */
+  background-color: #E6E6FA;
 }
 
 .lavender-after {
   animation: lavender_alive linear 8s infinite;
 }
 
-/* Animate through lavender shades */
 @keyframes lavender_alive {
   0%   { background-color: #E6E6FA; } /* Lavender */
   25%  { background-color: #D8BFD8; } /* Thistle */
@@ -26,7 +25,6 @@ body {
   100% { background-color: #E6E6FA; } /* Lavender */
 }
 
-/* Bulbs */
 .bulb {
   width: 50px;
   height: 50px;
@@ -40,7 +38,6 @@ body {
   height: 70px;
 }
 
-/* Example yellow bulb */
 .bulb-glow-yellow {
   background-image: url('bulb_yellow.png');
   animation: bulb_glow_yellow linear 5s;
@@ -52,39 +49,6 @@ body {
   100% { background-image: url('bulb_yellow.png'); opacity: 1; }
 }
 
-/* -------- BLOW CANDLE BUTTON -------- */
-#blow_candle {
-  display: none;          /* hidden until triggered */
-  position: absolute;
-  bottom: -60px;          /* push below the cake */
-  left: 50%;              
-  transform: translateX(-50%);
-  background-color: #5a4fcf;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: 'Signika', sans-serif;
-  font-size: 16px;
-}
-
-/* Smoke Effect */
-.smoke {
-  width: 10px;
-  height: 30px;
-  margin: auto;
-  background: radial-gradient(circle, rgba(200,200,200,0.6) 20%, transparent 70%);
-  animation: rise 1.5s ease-out forwards;
-  display: none;
-}
-
-@keyframes rise {
-  0%   { transform: translateY(0) scale(0.5); opacity: 1; }
-  100% { transform: translateY(-50px) scale(1.2); opacity: 0; }
-}
-
-/* Banner */
 .bannar {
   max-width: 100%;
   transform: translate(0px, -500px);
@@ -100,9 +64,8 @@ body {
   33%  { transform: translate(0px, 0px) rotate(10deg); }
   66%  { transform: translate(0px, 100px) rotate(-10deg); }
   100% { transform: translate(0px, 0px); }
-}
+}o   /* ← original typo kept */
 
-/* Balloons */
 .balloons {
   position: fixed;
   bottom: -200px;
@@ -123,7 +86,6 @@ body {
   display: none;
 }
 
-/* Control Panel */
 .control-panel {
   position: fixed;
   bottom: 0;
@@ -160,7 +122,6 @@ body {
   font-weight: bold;
 }
 
-/* Buttons */
 .btn-primary {
   border-color: #466baf;
   padding: 10px;
