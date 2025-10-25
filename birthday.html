@@ -19,18 +19,18 @@
       transition: background 2s ease-in-out;
     }
 
-    /* Lights background */
-    #lights-bg {
+    /* Lights transparent PNG */
+    #lights {
       position: fixed;
       top: 0;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
-      height: 100%;
-      background: url("lights_bg.jpg") no-repeat center top;
-      background-size: cover;
+      max-height: 200px;
       opacity: 0;
       transition: opacity 2s ease-in-out;
-      z-index: -1;
+      z-index: 1;
+      pointer-events: none;
     }
 
     /* Buttons */
@@ -45,6 +45,7 @@
       cursor: pointer;
       transition: transform 0.3s;
       margin-top: 20px;
+      z-index: 2;
     }
 
     .btn:hover {
@@ -59,31 +60,17 @@
       text-align: center;
       opacity: 0;
       transition: opacity 2s ease-in-out;
+      z-index: 2;
     }
 
-    /* Balloons */
-    .balloon {
-      position: absolute;
-      bottom: -150px;
-      width: 60px;
-      height: 80px;
-      border-radius: 50%;
-      background: red;
-      opacity: 0.8;
-      animation: floatUp 8s linear infinite;
+    /* Cake */
+    #cake {
+      display: none;
+      margin-top: 20px;
+      z-index: 2;
     }
 
-    .balloon:nth-child(2) { left: 20%; background: blue; animation-delay: 2s; }
-    .balloon:nth-child(3) { left: 40%; background: green; animation-delay: 4s; }
-    .balloon:nth-child(4) { left: 60%; background: orange; animation-delay: 1s; }
-    .balloon:nth-child(5) { left: 80%; background: purple; animation-delay: 3s; }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 0.8; }
-      100% { transform: translateY(-110vh); opacity: 0; }
-    }
-
-    /* Confetti poppers */
+    /* Confetti */
     .confetti {
       position: absolute;
       width: 10px;
@@ -97,29 +84,24 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
-
   </style>
 </head>
 <body>
-  <!-- Background -->
-  <div id="lights-bg"></div>
+  <!-- Lights PNG -->
+  <img id="lights" src="lights.png" alt="Lights">
 
   <!-- Step 1: Turn on lights -->
   <button id="start-btn" class="btn">✨ Please turn on the lights ✨</button>
   <div id="message"></div>
 
-  <!-- Balloons container -->
-  <div id="balloons"></div>
-
-  <!-- Cake Button (hidden initially) -->
-  <button id="cake-btn" class="btn" style="display:none;">🎂 Bring the Cake 🎂</button>
+  <!-- Cake -->
+  <img id="cake" src="cake.gif" alt="Birthday Cake">
 
   <script>
     const btn = document.getElementById("start-btn");
-    const bg = document.getElementById("lights-bg");
+    const lights = document.getElementById("lights");
     const msg = document.getElementById("message");
-    const balloonsContainer = document.getElementById("balloons");
-    const cakeBtn = document.getElementById("cake-btn");
+    const cake = document.getElementById("cake");
 
     // Function to trigger confetti
     function launchConfetti() {
@@ -137,37 +119,26 @@
 
     btn.addEventListener("click", () => {
       // Fade in lights
-      bg.style.opacity = 1;
+      lights.style.opacity = 1;
       document.body.style.backgroundColor = "#E6E6FA"; // lavender
 
       // Show message
       setTimeout(() => {
-        msg.innerHTML = "The lights are on! 🎇 Watch the magic...";
+        msg.innerHTML = "The lights are on! 🎇 Time for celebration...";
         msg.style.opacity = 1;
-
-        // Hide button
         btn.style.display = "none";
       }, 2000);
 
-      // Balloons + Confetti after 3s
+      // Confetti
       setTimeout(() => {
-        for (let i = 0; i < 5; i++) {
-          const balloon = document.createElement("div");
-          balloon.classList.add("balloon");
-          balloonsContainer.appendChild(balloon);
-        }
         launchConfetti();
       }, 3000);
 
-      // Show Cake button after 6s
+      // Show cake
       setTimeout(() => {
-        cakeBtn.style.display = "block";
-      }, 6000);
-    });
-
-    // Cake button action
-    cakeBtn.addEventListener("click", () => {
-      msg.innerHTML = "🎂 Here comes your cake with candles! Make a wish...";
+        cake.style.display = "block";
+        msg.innerHTML = "🎂 Here’s your cake with candles! Make a wish...";
+      }, 5000);
     });
   </script>
 </body>
