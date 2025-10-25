@@ -1250,7 +1250,7 @@ audio {
     }
 
 #blow_candle {
-  display: none; /* hidden until shown by script */
+  display: none;
   opacity: 0;
   transition: opacity 2s ease-in;
   background-color: #5a4fcf;
@@ -1260,13 +1260,10 @@ audio {
   border-radius: 6px;
   cursor: pointer;
 }
-
 #blow_candle.show {
   display: inline-block;
   opacity: 1;
 }
-
-
 
     /*controlling tablet width*/
     /*@media only screen and (max-width: 720px){
