@@ -196,62 +196,68 @@
   }
 }
 
-/* ============================================== Frosting
-*/
-
-.cobertura{
-  background:rgba(236,231,227,1);
-  border-radius:@D/2;
-  position:absolute;
-  top:60%; left:50%;
-  margin-left:-(@D/2)/1.8;
-  margin-top:-(@D/2)/10;
-  width:@D/1.8; height:@D/8;
-  z-index:10;
+/* ============================================== Frosting */
+.cobertura {
+  background: rgba(255, 192, 203, 0.9); /* light pink frosting */
+  border-radius: @D/2;
+  position: absolute;
+  top: 60%; 
+  left: 50%;
+  margin-left: -(@D/2)/1.8;
+  margin-top: -(@D/2)/10;
+  width: @D/1.8; 
+  height: @D/8;
+  z-index: 10;
 }
 
 .cobertura:after,
-.cobertura:before{
-  background:rgba(236,231,227,1);
-  border-radius:@D;
-  content:"";
-  position:absolute;
-  width:@D/20; height:@D/10;
+.cobertura:before {
+  background: rgba(255, 192, 203, 0.9); /* same pink for drips */
+  border-radius: @D;
+  content: "";
+  position: absolute;
+  width: @D/20; 
+  height: @D/10;
 }
 
-.cobertura:after{
-  top:@D/15; right:@D/7;
+.cobertura:after {
+  top: @D/15; 
+  right: @D/7;
 }
 
-.cobertura:before{
-  top:@D/10; right:@D/11;
+.cobertura:before {
+  top: @D/10; 
+  right: @D/11;
 }
 
-/* ============================================== BIZCOCHO
-*/
-
-.bizcocho{
-  background:rgba(109,56,38,1);
-  position:absolute;
-  bottom:0; left:50%;
-  margin-left:-(@D/2)/2;
-  width:@D/2; height:@D/3;
+/* ============================================== BIZCOCHO (Cake Base) */
+.bizcocho {
+  background: rgba(109,56,38,1); /* chocolate base */
+  position: absolute;
+  bottom: 0; 
+  left: 50%;
+  margin-left: -(@D/2)/2;
+  width: @D/2; 
+  height: @D/3;
 }
 
 .bizcocho:after,
-.bizcocho:before{
-  background:rgba(236,231,227,0.6);
-  content:"";
-  position:absolute;
-  width:100%; height:@D/20;
+.bizcocho:before {
+  background: rgba(255, 192, 203, 0.6); /* pink cream layers */
+  content: "";
+  position: absolute;
+  width: 100%; 
+  height: @D/20;
 }
 
-.bizcocho:after{
-  top:30%; left:0;
+.bizcocho:after {
+  top: 30%; 
+  left: 0;
 }
 
-.bizcocho:before{
-  top:60%; left:0;
+.bizcocho:before {
+  top: 60%; 
+  left: 0;
 }
 
 /* ============================================== TEXT
