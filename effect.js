@@ -195,7 +195,19 @@ $('document').ready(function(){
 	});
 });
 
+// Blow Candle Button
+$('#blow_candle').click(function(){
+  // Make the flames disappear
+  $('.fuego').fadeOut('slow');
 
+  // Optional: flicker once before going off
+  $('.fuego').fadeIn(200).fadeOut(800);
+
+  // After blowing, go to puzzle page
+  setTimeout(function(){
+    window.location.href = "puzzle.html"; 
+  }, 2000);
+});
 
 
 //alert('hello');
