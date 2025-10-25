@@ -195,19 +195,25 @@ $('document').ready(function(){
 	});
 });
 
-// Blow Candle Button
-$('#blow_candle').click(function(){
-  // Make the flames disappear
-  $('.fuego').fadeOut('slow');
+$('#light_candle').click(function(){
+    // your existing candle lighting code...
 
-  // Optional: flicker once before going off
-  $('.fuego').fadeIn(200).fadeOut(800);
-
-  // After blowing, go to puzzle page
-  setTimeout(function(){
-    window.location.href = "puzzle.html"; 
-  }, 2000);
+    // After lighting, show the blow button
+    $('#blow_candle').fadeIn('slow');
 });
+
+$('#blow_candle').click(function(){
+    // Example: fade out the flame
+    $('.flame').fadeOut('slow');   // assuming your candle flame has class="flame"
+
+    // Optional: little smoke effect
+    $('.candle').append('<div class="smoke"></div>');
+    $('.smoke').fadeIn(200).delay(800).fadeOut(1000);
+
+    // Hide the button after blowing
+    $(this).fadeOut();
+});
+
 
 
 //alert('hello');
