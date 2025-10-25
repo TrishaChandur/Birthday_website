@@ -1249,17 +1249,13 @@ audio {
         background-color: #466baf;
     }
 
+/* Blow Candle button fade-in effect */
 #blow_candle {
-  display: none;
+  display: none;              /* hidden by default */
   opacity: 0;
   transition: opacity 2s ease-in;
-  background-color: #5a4fcf;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
 }
+
 #blow_candle.show {
   display: inline-block;
   opacity: 1;
