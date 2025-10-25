@@ -1,11 +1,8 @@
-// ✅ FIXED: use .on('load') instead of .load
-$(window).on('load', function(){
+$(window).load(function(){
 	$('.loading').fadeOut('fast');
 	$('.container').fadeIn('fast');
 });
-
-// ✅ FIXED: use $(document).ready instead of $('document').ready
-$(document).ready(function(){
+$('document').ready(function(){
 		var vw;
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
@@ -26,7 +23,7 @@ $(document).ready(function(){
 		$('#bulb_green').addClass('bulb-glow-green');
 		$('#bulb_pink').addClass('bulb-glow-pink');
 		$('#bulb_orange').addClass('bulb-glow-orange');
-		$('body').addClass('lavender');
+		$('body').addClass('peach');
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
 			$('#play').fadeIn('slow');
 		});
@@ -41,7 +38,7 @@ $(document).ready(function(){
 		$('#bulb_pink').addClass('bulb-glow-pink-after');
 		$('#bulb_orange').addClass('bulb-glow-orange-after');
 		$('body').css('backgroud-color','#FFF');
-		$('body').addClass('lavender-after');
+		$('body').addClass('peach-after');
 		$(this).fadeOut('slow').delay(6000).promise().done(function(){
 			$('#bannar_coming').fadeIn('slow');
 		});
@@ -89,6 +86,7 @@ $(document).ready(function(){
 			loopFive();
 		});
 	}
+
 	function loopSix() {
 		var randleft = 1000*Math.random();
 		var randtop = 500*Math.random();
@@ -108,6 +106,11 @@ $(document).ready(function(){
 		$('.balloon-border').animate({top:-500},8000);
 		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
+		// $('#b3').addClass('balloons-rotate-behaviour-two');
+		// $('#b4').addClass('balloons-rotate-behaviour-one');
+		// $('#b5').addClass('balloons-rotate-behaviour-one');
+		// $('#b6').addClass('balloons-rotate-behaviour-two');
+		// $('#b7').addClass('balloons-rotate-behaviour-one');
 		loopOne();
 		loopTwo();
 		loopThree();
@@ -135,6 +138,7 @@ $(document).ready(function(){
 		});
 	});
 
+		
 	$('#wish_message').click(function(){
 		 vw = $(window).width()/2;
 
@@ -168,30 +172,30 @@ $(document).ready(function(){
 		
 		var i;
 
-		function msgLoop(i) {
+		function msgLoop (i) {
 			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-				i = i + 1;
-				$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
+			i=i+1;
+			$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
+			if(i==50){
+				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+					$('.cake').fadeIn('fast');
+				});
+				
+			}
+			else{
+				msgLoop(i);
+			}			
 
-				if(i == $(".message p").length){
-					$(".message p:last").fadeOut('slow').promise().done(function () {
-						$('.cake').fadeIn('fast');
-						$('#blow_candle').fadeIn('slow'); // show blow button
-					});
-				}
-				else{
-					msgLoop(i);
-				}
-			});
+		});
+			// body...
 		}
+		
 		msgLoop(0);
+		
 	});
-
-	$('#blow_candle').click(function(){
-		$('.fuego').fadeOut('slow');   // blow out flames
-		$('.cake').append('<div class="smoke">💨</div>');
-		$('.smoke').fadeIn(200).delay(800).fadeOut(1000);
-		$(this).fadeOut();
-	});
-
 });
+
+
+
+
+//alert('hello');
