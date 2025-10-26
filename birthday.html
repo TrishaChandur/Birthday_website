@@ -28,7 +28,7 @@
 	   Your browser isn't invited for super fun audio time.
     </audio>
     
-    <!-- balloons, lights, cake, message -->
+    <!-- balloons -->
     <div class="balloons text-center" id="b1"><h2 style="color:#F2B300;">H</h2></div>
     <div class="balloons text-center" id="b2"><h2 style="color:#0719D4;">B</h2></div>
     <div class="balloons text-center" id="b3"><h2 style="color:#D14D39;">D</h2></div>
@@ -39,7 +39,7 @@
     <img src="Balloon-Border.png" width="100%" class="balloon-border">
 
 	<div class="container">
-		<!-- bulbs, banner, cake -->
+		<!-- banner + cake -->
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<img src="banner.png" class="bannar">
@@ -75,7 +75,23 @@
 		</div>
 	</div>
 
-	<!-- 🎮 Puzzle Game -->
+	<!-- buttons (navbar stays at bottom) -->
+	<div class="navbar navbar-fixed-bottom">
+		<div class="row">
+			<div class="col-md-6 text-center col-md-offset-3">
+				<button class="btn btn-primary" id="turn_on">Turn On Lights</button>
+				<button class="btn btn-primary" id="play">Play Music</button>
+				<button class="btn btn-primary" id="bannar_coming">Let's Decorate</button>
+				<button class="btn btn-primary" id="balloons_flying">Fly With Balloons</button>
+				<button class="btn btn-primary" id="cake_fadein">Most Delicious Cake Ever</button>
+				<button class="btn btn-primary" id="light_candle"> Light Candle</button>
+				<button class="btn btn-primary" id="wish_message">Happy Birthday</button>
+				<button class="btn btn-primary" id="story">A message for you</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 🎮 Puzzle Game (hidden at start) -->
     <div id="gameSection" style="display:none; text-align:center; margin-top:40px;">
         <h1>Arrange My Life in Order 🎉</h1>
         <p>Drag the photos into the correct order: Baby → Student → Suit</p>
@@ -103,11 +119,11 @@
 	<script src="effect.js"></script>
 
     <script>
-      // Make the game appear only after story ends
+      // Show puzzle after story ends
       $('#story').on('click', function(){
         setTimeout(function(){
           $('#gameSection').fadeIn('slow');
-        }, 5000); // shows puzzle after last message fades
+        }, 5000); 
       });
     </script>
 </body>
