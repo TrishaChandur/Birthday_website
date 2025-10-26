@@ -1246,50 +1246,6 @@ audio {
         background-color: #466baf;
     }
 
-/* 🎮 Puzzle Game Styles */
-.game-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 20px;
-  flex-wrap: wrap; /* allow wrapping if screen small */
-}
-
-.photo img {
-  width: 180px;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-}
-
-.dropzone {
-  width: 200px;
-  height: 250px;
-  border: 2px dashed #aaa;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #666;
-  text-align: center;
-}
-
-.dropzone.over {
-  border-color: #3b82f6;
-  background: #eef6ff;
-}
-
-.success {
-  text-align: center;
-  font-size: 1.5em;
-  margin-top: 20px;
-  color: green;
-}
-
-.hidden {
-  display: none;
-}
-
 
     /*controlling tablet width*/
     /*@media only screen and (max-width: 720px){
