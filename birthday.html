@@ -1,130 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9"> <![endif]-->
+<!--[if gt IE 8]> <html> <![endif]-->
+<!--[if !IE]><!--><html lang="en"><!-- <![endif]-->
 <head>
-	<title>Happy Birthday</title>
-	<meta charset="UTF-8" />
-	<meta name="description" content="Happy Birthday">
-	<meta name="robots" content="index, follow" />
-    <meta name="keywords" content="Birthday, Happy">
-    <meta property="og:type" content="E-Greeting" />
-    <meta property="og:image" content="favicon.ico" />
-    <meta property="og:description" content="Wish you a very Happy Birthday">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<link rel="stylesheet" type="text/css" href="loading.css">
-	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet/less" href="cake.less">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
+  <title>Happy Birthday</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Happy Birthday">
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="Birthday, Happy">
+  <!-- Facebook Meta -->
+  <meta property="og:type" content="E-Greeting" />
+  <meta property="og:image" content="favicon.ico" />
+  <meta property="og:description" content="Wish you a very Happy Birthday">
+  <!-- End Facebook Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="loading.css">
+  <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet/less" href="cake.less">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
+
+  <style>
+    /* Puzzle styles */
+    .game-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 20px;
+    }
+    .photo img {
+      width: 120px;
+      height: auto;
+      border: 2px solid #999;
+      border-radius: 8px;
+      cursor: grab;
+    }
+    .dropzone {
+      width: 130px;
+      height: 150px;
+      border: 2px dashed #666;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      color: #555;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .dropzone.filled {
+      border: 2px solid #28a745;
+      background: #d4edda;
+    }
+    .success {
+      text-align: center;
+      font-size: 20px;
+      color: green;
+      margin-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-	<div class="loading"></div>
-	<audio class="song" controls loop>
-        <source src="hbd.mp3"></source>
-	   Your browser isn't invited for super fun audio time.
-    </audio>
-    
-    <!-- balloons -->
-    <div class="balloons text-center" id="b1"><h2 style="color:#F2B300;">H</h2></div>
-    <div class="balloons text-center" id="b2"><h2 style="color:#0719D4;">B</h2></div>
-    <div class="balloons text-center" id="b3"><h2 style="color:#D14D39;">D</h2></div>
-    <div class="balloons text-center" id="b4"><h2 style="color:#8FAD00;">B</h2></div>
-    <div class="balloons text-center" id="b5"><h2 style="color:#8377E4;">A</h2></div>
-    <div class="balloons text-center" id="b6"><h2 style="color:#99C96A;">B</h2></div>
-    <div class="balloons text-center" id="b7"><h2 style="color:#20CFB4;">Y</h2></div>
-    <img src="Balloon-Border.png" width="100%" class="balloon-border">
+  <div class="loading"></div>
+  <audio class="song" controls loop>
+    <source src="hbd.mp3"></source>
+    Your browser isn't invited for super fun audio time.
+  </audio>
 
-	<div class="container">
-		<!-- banner + cake -->
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<img src="banner.png" class="bannar">
-			</div>
-		</div>
-		<div class="row cake-cover">
-			<div class="col-md-12 text-center">
-				<div class="cake">
-				  <div class="velas">
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				  </div>
-				  <div class="cobertura"></div>
-				  <div class="bizcocho"></div>
-				</div>
-			</div>
-		</div>
-		<div class="row message">
-			<div class="col-md-12">
-				<p>Today is...</p>
-				<p> the most special day of my life </p>
-				<p> because it’s your birthday. </p>
-				<p> I’m forever grateful for your existence </p>
-				<p> and the love you’ve given me. </p>
-				<p> I promise to always be here— </p>
-				<p> loving you, caring for you, and</p>
-				<p> supporting you endlessly. </p>
-				<p> My love for you is eternal. </p>
-			</div>
-		</div>
-	</div>
+  <!-- Balloons -->
+  <div class="balloons text-center" id="b1"><h2 style="color:#F2B300;">H</h2></div>
+  <div class="balloons text-center" id="b2"><h2 style="color:#0719D4;">B</h2></div>
+  <div class="balloons text-center" id="b3"><h2 style="color:#D14D39;">D</h2></div>
+  <div class="balloons text-center" id="b4"><h2 style="color:#8FAD00;">B</h2></div>
+  <div class="balloons text-center" id="b5"><h2 style="color:#8377E4;">A</h2></div>
+  <div class="balloons text-center" id="b6"><h2 style="color:#99C96A;">B</h2></div>
+  <div class="balloons text-center" id="b7"><h2 style="color:#20CFB4;">Y</h2></div>
+  <img src="Balloon-Border.png" width="100%" class="balloon-border">
 
-	<!-- buttons (navbar stays at bottom) -->
-	<div class="navbar navbar-fixed-bottom">
-		<div class="row">
-			<div class="col-md-6 text-center col-md-offset-3">
-				<button class="btn btn-primary" id="turn_on">Turn On Lights</button>
-				<button class="btn btn-primary" id="play">Play Music</button>
-				<button class="btn btn-primary" id="bannar_coming">Let's Decorate</button>
-				<button class="btn btn-primary" id="balloons_flying">Fly With Balloons</button>
-				<button class="btn btn-primary" id="cake_fadein">Most Delicious Cake Ever</button>
-				<button class="btn btn-primary" id="light_candle"> Light Candle</button>
-				<button class="btn btn-primary" id="wish_message">Happy Birthday</button>
-				<button class="btn btn-primary" id="story">A message for you</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- 🎮 Puzzle Game (hidden at start) -->
-    <div id="gameSection" style="display:none; text-align:center; margin-top:40px;">
-        <h1>Arrange My Life in Order 🎉</h1>
-        <p>Drag the photos into the correct order: Baby → Student → Suit</p>
-
-        <div class="game-container" id="photos">
-          <div class="photo" draggable="true" id="baby"><img src="photo1.jpg" width="120"></div>
-          <div class="photo" draggable="true" id="student"><img src="photo2.jpg" width="120"></div>
-          <div class="photo" draggable="true" id="suit"><img src="photo3.jpg" width="120"></div>
-        </div>
-
-        <div class="game-container">
-          <div class="dropzone" data-id="baby">Drop Baby</div>
-          <div class="dropzone" data-id="student">Drop Student</div>
-          <div class="dropzone" data-id="suit">Drop Suit</div>
-        </div>
-
-        <div class="success hidden" id="successMsg">
-          🎊 Great! You arranged my life correctly! 🎊
-        </div>
+  <div class="container">
+    <!-- bulbs row -->
+    <div class="row">
+      <div class="col-md-2 col-xs-2 bulb-holder"><div class="bulb" id="bulb_yellow"></div></div>
+      <div class="col-md-2 col-xs-2 bulb-holder"><div class="bulb" id="bulb_red"></div></div>
+      <div class="col-md-2 col-xs-2 bulb-holder"><div class="bulb" id="bulb_blue"></div></div>
+      <div class="col-md-2 col-xs-2 bulb-holder"><div class="bulb" id="bulb_green"></div></div>
+      <div class="col-md-2 col-xs-2 bulb-holder"><div class="bulb" id="bulb_pink"></div></div>
+      <div class="col-md-2 col-xs-2 bulb-holder"><div class="bulb" id="bulb_orange"></div></div>
     </div>
 
-	<!-- scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<script src="effect.js"></script>
+    <!-- banner -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img src="banner.png" class="bannar">
+      </div>
+    </div>
 
-    <script>
-      // Show puzzle after story ends
-      $('#story').on('click', function(){
-        setTimeout(function(){
-          $('#gameSection').fadeIn('slow');
-        }, 5000); 
+    <!-- cake -->
+    <div class="row cake-cover">
+      <div class="col-md-12 text-center">
+        <div class="cake">
+          <div class="velas">
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+          </div>
+          <div class="cobertura"></div>
+          <div class="bizcocho"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- message -->
+    <div class="row message">
+      <div class="col-md-12">
+        <p>Today is...</p>
+        <p> the most special day of my life </p>
+        <p> because it’s your birthday. </p>
+        <p> I’m forever grateful for your existence </p>
+        <p> and the love you’ve given me. </p>
+        <p> I promise to always be here— </p>
+        <p> loving you, caring for you, and</p>
+        <p> supporting you endlessly. </p>
+        <p> My love for you is eternal. </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- navbar buttons -->
+  <div class="navbar navbar-fixed-bottom">
+    <div class="row">
+      <div class="col-md-6 text-center col-md-offset-3">
+        <button class="btn btn-primary" id="turn_on">Turn On Lights</button>
+        <button class="btn btn-primary" id="play">Play Music</button>
+        <button class="btn btn-primary" id="bannar_coming">Let's Decorate</button>
+        <button class="btn btn-primary" id="balloons_flying">Fly With Balloons</button>
+        <button class="btn btn-primary" id="cake_fadein">Most Delicious Cake Ever</button>
+        <button class="btn btn-primary" id="light_candle">Light Candle</button>
+        <button class="btn btn-primary" id="wish_message">Happy Birthday</button>
+        <button class="btn btn-primary" id="story">A Message for you</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🎮 Puzzle Game (hidden until you scroll down after story) -->
+  <div id="puzzleSection" style="margin-top:40px; text-align:center;">
+    <h1>Arrange My Life in Order 🎉</h1>
+    <p>Drag the photos into the correct order: Baby → Student → Suit</p>
+
+    <div class="game-container" id="photos">
+      <div class="photo" draggable="true" id="baby"><img src="photo1.jpg"></div>
+      <div class="photo" draggable="true" id="student"><img src="photo2.jpg"></div>
+      <div class="photo" draggable="true" id="suit"><img src="photo3.jpg"></div>
+    </div>
+
+    <div class="game-container">
+      <div class="dropzone" data-id="baby">Drop Baby</div>
+      <div class="dropzone" data-id="student">Drop Student</div>
+      <div class="dropzone" data-id="suit">Drop Suit</div>
+    </div>
+
+    <div class="success hidden" id="successMsg">
+      🎊 Great! You arranged my life correctly! 🎊
+    </div>
+  </div>
+
+  <script>
+    // Drag and Drop Game Script
+    const photos = document.querySelectorAll('.photo');
+    const dropzones = document.querySelectorAll('.dropzone');
+    const successMsg = document.getElementById('successMsg');
+
+    photos.forEach(photo => {
+      photo.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('id', e.target.id);
       });
-    </script>
+    });
+
+    dropzones.forEach(zone => {
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+      });
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        const id = e.dataTransfer.getData('id');
+        if (zone.dataset.id === id) {
+          zone.innerHTML = '';
+          zone.appendChild(document.getElementById(id));
+          zone.classList.add('filled');
+        }
+        checkWin();
+      });
+    });
+
+    function checkWin() {
+      if ([...dropzones].every(z => z.classList.contains('filled'))) {
+        successMsg.classList.remove('hidden');
+      }
+    }
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="effect.js"></script>
 </body>
 </html>
