@@ -143,6 +143,33 @@
 
 	</div>
 </body>
+    <!-- your birthday code with cake, balloons, messages -->
+
+    <!-- 🎮 Arrange My Life Game -->
+    <h1>Arrange My Life in Order 🎉</h1>
+    <p>Drag the photos into the correct order: Baby → Student → Suit</p>
+
+    <div class="game-container" id="photos">
+      <div class="photo" draggable="true" id="baby"><img src="photo1.jpg"></div>
+      <div class="photo" draggable="true" id="student"><img src="photo2.jpg"></div>
+      <div class="photo" draggable="true" id="suit"><img src="photo3.jpg"></div>
+    </div>
+
+    <div class="game-container">
+      <div class="dropzone" data-id="baby">Drop Baby</div>
+      <div class="dropzone" data-id="student">Drop Student</div>
+      <div class="dropzone" data-id="suit">Drop Suit</div>
+    </div>
+
+    <div class="success hidden" id="successMsg">
+      🎊 Great! You arranged my life correctly! 🎊
+    </div>
+
+    <script>
+      // drag/drop script here...
+    </script>
+</body>
+</html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="effect.js"></script>
